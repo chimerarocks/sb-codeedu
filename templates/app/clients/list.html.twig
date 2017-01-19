@@ -1,0 +1,9 @@
+{% extends '@layout/default.html.twig' %}
+
+{% block title %} Clientes {% endblock %}
+
+{% block content %}
+    {% for client in clients %}
+        {{ client.name }} <br/>
+    {% endfor %}
+{% endblock %}

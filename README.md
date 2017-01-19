@@ -37,3 +37,5 @@ commit: 'uml'
 commit: 'yaml mapping of entities'
 
 commit: 'repositories'
+
+commit: 'listing clients route + repository + action + config'

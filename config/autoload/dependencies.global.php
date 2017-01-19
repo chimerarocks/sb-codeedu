@@ -19,6 +19,10 @@ return [
         'factories' => [
             Application::class => ApplicationFactory::class,
             Helper\UrlHelper::class => Helper\UrlHelperFactory::class,
+            \CodeEmailMkt\Domain\Repository\ClientRepositoryInterface::class =>
+                \CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\ClientRepositoryFactory::class,
+            \CodeEmailMkt\Domain\Repository\AddressRepositoryInterface::class =>
+                \CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\AddressRepositoryFactory::class,
         ],
         'aliases' => [
             'configuration' => 'config', //Doctrine needs a service called Configuration
