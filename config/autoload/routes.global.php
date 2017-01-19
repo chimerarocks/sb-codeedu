@@ -4,10 +4,10 @@ return [
     'dependencies' => [
         'invokables' => [
             Zend\Expressive\Router\RouterInterface::class => Zend\Expressive\Router\AuraRouter::class,
-            CodeEmailMkt\Action\PingAction::class => CodeEmailMkt\Action\PingAction::class,
+            CodeEmailMkt\Application\Action\PingAction::class => CodeEmailMkt\Application\Action\PingAction::class,
         ],
         'factories' => [
-            CodeEmailMkt\Action\HomePageAction::class => CodeEmailMkt\Action\HomePageFactory::class,
+            CodeEmailMkt\Application\Action\HomePageAction::class => CodeEmailMkt\Application\Action\HomePageFactory::class,
         ],
     ],
 
@@ -15,13 +15,13 @@ return [
         [
             'name' => 'home',
             'path' => '/',
-            'middleware' => CodeEmailMkt\Action\HomePageAction::class,
+            'middleware' => CodeEmailMkt\Application\Action\HomePageAction::class,
             'allowed_methods' => ['GET'],
         ],
         [
             'name' => 'api.ping',
             'path' => '/api/ping',
-            'middleware' => CodeEmailMkt\Action\PingAction::class,
+            'middleware' => CodeEmailMkt\Application\Action\PingAction::class,
             'allowed_methods' => ['GET'],
         ],
     ],

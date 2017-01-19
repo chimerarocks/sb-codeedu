@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeEmailMkt\Action;
+namespace CodeEmailMkt\Application\Action;
 
 use Zend\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
