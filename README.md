@@ -20,3 +20,4 @@ made changes:
 
 https://gist.github.com/argentinaluiz/a14df7b1ef73cc111b280e417f84ba92
 
+commit: 'doctrine integration'
