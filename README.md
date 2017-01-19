@@ -33,3 +33,5 @@ commit: 'doctrine infrastructure'
 commit: 'adding adminLTE'
 
 commit: 'uml'
+
+commit: 'yaml mapping of entities'

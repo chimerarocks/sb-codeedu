@@ -1,0 +1,34 @@
+#CodeEmailMkt.Domain.Entity.Address.dcm.yml
+CodeEmailMkt\Domain\Entity\Address:
+  type: entity
+  repositoryClass: CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\AddressRepository
+  table: addresses
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    cep:
+      type: string
+      length: 255
+      nullable: true
+    street:
+      type: string
+      length: 255
+      unique: true
+    city:
+      type: string
+      length: 255
+      unique: true
+    state:
+      type: string
+      length: 255
+      unique: true
+  manyToOne:
+    client:
+      targetEntity: Client
+      inversedBy: addresses
+      joinColumn:
+        name: client_id
+        referencedColumnName: id

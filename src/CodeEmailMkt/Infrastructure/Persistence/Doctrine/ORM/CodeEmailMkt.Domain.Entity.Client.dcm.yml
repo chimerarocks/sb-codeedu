@@ -1,0 +1,28 @@
+#CodeEmailMkt.Domain.Entity.Client.dcm.yml
+CodeEmailMkt\Domain\Entity\Client:
+  type: entity
+  repositoryClass: CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\ClientRepository
+  table: clients
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 255
+      nullable: true
+    email:
+      type: string
+      length: 255
+      unique: true
+    cpf:
+      type: string
+      length: 255
+      unique: true
+  oneToMany:
+    addresses:
+      targetEntity: Address
+      mappedBy: client
+      cascade: ["persist", "merge"]

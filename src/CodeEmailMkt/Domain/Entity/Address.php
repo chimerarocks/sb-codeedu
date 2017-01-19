@@ -2,50 +2,20 @@
 
 namespace CodeEmailMkt\Domain\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity
- * @ORM\Table(name="address")
- */
 class Address
 {
-    /**
-     * @ORM\Id
-     * @ORM\Column(type="integer");
-     * @ORM\GeneratedValue(strategy="AUTO")
-     */
     protected $id;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     protected $cep;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     protected $street;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     protected $city;
 
-    /**
-     * @ORM\Column(type="string")
-     */
     protected $state;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="TargetMkt\Domain\Entity\Client", inversedBy="addresses")
-     * @ORM\JoinColumn(name="client_id", referencedColumnName="id")
-     */
     protected $client;
 
-    /**
-     * @return int|null
-     */
     public function getId()
     {
         return $this->id;
