@@ -25,3 +25,5 @@ commit: 'doctrine integration'
 commit: 'change namespace application'
 
 commit: 'db configuration'
+
+commit: 'added domain'
