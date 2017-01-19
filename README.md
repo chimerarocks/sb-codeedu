@@ -31,3 +31,5 @@ commit: 'added domain'
 commit: 'doctrine infrastructure'
 
 commit: 'adding adminLTE'
+
+commit: 'uml'

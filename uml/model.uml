@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_zidwgF5zEeaNrvWAGFjFrg" name="RootElement" visibility="public">
+  <packagedElement xmi:type="uml:Package" xmi:id="_LH8ssF53EeaNrvWAGFjFrg" name="System">
+    <packagedElement xmi:type="uml:Package" xmi:id="_QjyDQF53EeaNrvWAGFjFrg" name="Infrastructure">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_mTUR0F53EeaNrvWAGFjFrg" client="_QjyDQF53EeaNrvWAGFjFrg" supplier="_Uisv4F53EeaNrvWAGFjFrg"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_-BTfMF55EeaNrvWAGFjFrg" name="Data Access"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_B7kVUF56EeaNrvWAGFjFrg" name="ServiceConfiguration"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_GQNaUF56EeaNrvWAGFjFrg" name="Application Configuration"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_Jebp0F56EeaNrvWAGFjFrg" name="Third Party Configuration"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_SZqm0F53EeaNrvWAGFjFrg" name="Application">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_jNYboF53EeaNrvWAGFjFrg" client="_SZqm0F53EeaNrvWAGFjFrg" supplier="_Uisv4F53EeaNrvWAGFjFrg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_kv9BoF53EeaNrvWAGFjFrg" client="_SZqm0F53EeaNrvWAGFjFrg" supplier="_QjyDQF53EeaNrvWAGFjFrg"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_JeVYoF55EeaNrvWAGFjFrg" name="Middlewares"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_M7rCMF55EeaNrvWAGFjFrg" name="Application Services"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_Uisv4F53EeaNrvWAGFjFrg" name="Domain">
+      <packagedElement xmi:type="uml:Package" xmi:id="_diEMsF55EeaNrvWAGFjFrg" name="Entity"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_gPgDUF55EeaNrvWAGFjFrg" name="Repository"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_lmSh0F55EeaNrvWAGFjFrg" name="Factory"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_qFFoYF55EeaNrvWAGFjFrg" name="Service"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_tarrMF55EeaNrvWAGFjFrg" name="Aggregate"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Package" xmi:id="_Vp6PkF53EeaNrvWAGFjFrg" name="Interface">
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_bX4fAF53EeaNrvWAGFjFrg" client="_Vp6PkF53EeaNrvWAGFjFrg" supplier="_SZqm0F53EeaNrvWAGFjFrg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_exjJgF53EeaNrvWAGFjFrg" client="_Vp6PkF53EeaNrvWAGFjFrg" supplier="_QjyDQF53EeaNrvWAGFjFrg"/>
+      <packagedElement xmi:type="uml:Dependency" xmi:id="_g_N68F53EeaNrvWAGFjFrg" client="_Vp6PkF53EeaNrvWAGFjFrg" supplier="_Uisv4F53EeaNrvWAGFjFrg"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_uRWC4F54EeaNrvWAGFjFrg" name="Views"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_0P320F54EeaNrvWAGFjFrg" name="HTML"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_3l2UIF54EeaNrvWAGFjFrg" name="Javascript"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_9SRrcF54EeaNrvWAGFjFrg" name="CSS"/>
+      <packagedElement xmi:type="uml:Package" xmi:id="_C7G8MF55EeaNrvWAGFjFrg" name="Template Engine"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_gGGsMF54EeaNrvWAGFjFrg" client="_LH8ssF53EeaNrvWAGFjFrg" supplier="_cWAesF54EeaNrvWAGFjFrg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_cWAesF54EeaNrvWAGFjFrg" name="Database"/>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_Wz2y0F56EeaNrvWAGFjFrg" name="Admin"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_XkgMoF56EeaNrvWAGFjFrg" name="Importar contatos"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_aWVbEF56EeaNrvWAGFjFrg" name="Criar contatos"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_cTrRgF56EeaNrvWAGFjFrg" name="Remover contatos"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_hWZkgF56EeaNrvWAGFjFrg" memberEnd="_hW7wAF56EeaNrvWAGFjFrg _hXHWMF56EeaNrvWAGFjFrg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_hWd18F56EeaNrvWAGFjFrg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_hWedAF56EeaNrvWAGFjFrg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_hW7wAF56EeaNrvWAGFjFrg" name="importar contatos" type="_XkgMoF56EeaNrvWAGFjFrg" association="_hWZkgF56EeaNrvWAGFjFrg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_hXHWMF56EeaNrvWAGFjFrg" name="actor1" type="_Wz2y0F56EeaNrvWAGFjFrg" association="_hWZkgF56EeaNrvWAGFjFrg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iwot4F56EeaNrvWAGFjFrg" memberEnd="_iwqjEF56EeaNrvWAGFjFrg _iwqjEV56EeaNrvWAGFjFrg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_iwp8AF56EeaNrvWAGFjFrg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_iwp8AV56EeaNrvWAGFjFrg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_iwqjEF56EeaNrvWAGFjFrg" name="criar contatos" type="_aWVbEF56EeaNrvWAGFjFrg" association="_iwot4F56EeaNrvWAGFjFrg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_iwqjEV56EeaNrvWAGFjFrg" name="actor1" type="_Wz2y0F56EeaNrvWAGFjFrg" association="_iwot4F56EeaNrvWAGFjFrg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_lqwVoF56EeaNrvWAGFjFrg" memberEnd="_lqxjwV56EeaNrvWAGFjFrg _lqxjwl56EeaNrvWAGFjFrg">
+    <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_lqw8sF56EeaNrvWAGFjFrg" source="org.eclipse.papyrus">
+      <details xmi:type="ecore:EStringToStringMapEntry" xmi:id="_lqxjwF56EeaNrvWAGFjFrg" key="nature" value="UML_Nature"/>
+    </eAnnotations>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_lqxjwV56EeaNrvWAGFjFrg" name="remover contatos" type="_cTrRgF56EeaNrvWAGFjFrg" association="_lqwVoF56EeaNrvWAGFjFrg"/>
+    <ownedEnd xmi:type="uml:Property" xmi:id="_lqxjwl56EeaNrvWAGFjFrg" name="actor1" type="_Wz2y0F56EeaNrvWAGFjFrg" association="_lqwVoF56EeaNrvWAGFjFrg"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_tZFTQF56EeaNrvWAGFjFrg" name="Contato" visibility="package">
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_-aj3QF56EeaNrvWAGFjFrg" name="id"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_AwyHwF57EeaNrvWAGFjFrg" name="name"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_CHHokF57EeaNrvWAGFjFrg" name="email"/>
+    <ownedAttribute xmi:type="uml:Property" xmi:id="_DaulgF57EeaNrvWAGFjFrg" name="created_at"/>
+  </packagedElement>
+</uml:Model>
