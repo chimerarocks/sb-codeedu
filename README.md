@@ -29,3 +29,5 @@ commit: 'db configuration'
 commit: 'added domain'
 
 commit: 'doctrine infrastructure'
+
+commit: 'adding adminLTE'
