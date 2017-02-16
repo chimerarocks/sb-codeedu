@@ -1,4 +1,5 @@
 .idea
+.phpintel
 composer.phar
 
 clover.xml
