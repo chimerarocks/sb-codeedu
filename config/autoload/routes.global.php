@@ -1,5 +1,7 @@
 <?php
 
+use CodeEmailMkt\Application\Action\Client;
+
 return [
     'dependencies' => [
         'invokables' => [
@@ -9,8 +11,10 @@ return [
         'factories' => [
             CodeEmailMkt\Application\Action\HomePageAction::class =>
                 CodeEmailMkt\Application\Action\HomePageFactory::class,
-            CodeEmailMkt\Application\Action\Client\ClientList\ClientListPageAction::class =>
-                CodeEmailMkt\Application\Action\Client\ClientList\ClientListPageFactory::class,
+            Client\ClientList\ClientListPageAction::class =>
+                Client\ClientList\ClientListPageFactory::class,
+            Client\ClientCreate\ClientCreatePageAction::class =>
+                Client\ClientCreate\ClientCreatePageFactory::class,
         ],
     ],
 
@@ -31,6 +35,12 @@ return [
             'name' => 'admin.clients.list',
             'path' => '/admin/clientes',
             'middleware' => CodeEmailMkt\Application\Action\Client\ClientList\ClientListPageAction::class,
+            'allowed_methods' => ['GET'],
+        ],
+        [
+            'name' => 'admin.clients.new',
+            'path' => '/admin/clientes/novo',
+            'middleware' => CodeEmailMkt\Application\Action\Client\ClientCreate\ClientCreatePageAction::class,
             'allowed_methods' => ['GET'],
         ],
     ],
