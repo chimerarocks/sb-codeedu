@@ -38,10 +38,10 @@ return [
             'allowed_methods' => ['GET'],
         ],
         [
-            'name' => 'admin.clients.new',
+            'name' => 'admin.clients.create',
             'path' => '/admin/clientes/novo',
             'middleware' => CodeEmailMkt\Application\Action\Client\ClientCreate\ClientCreatePageAction::class,
-            'allowed_methods' => ['GET'],
+            'allowed_methods' => ['GET', 'POST'],
         ],
     ],
 ];

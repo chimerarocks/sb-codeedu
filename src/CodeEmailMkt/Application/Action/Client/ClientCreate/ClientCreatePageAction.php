@@ -2,6 +2,7 @@
 
 namespace CodeEmailMkt\Application\Action\Client\ClientCreate;
 
+use CodeEmailMkt\Domain\Entity\Client;
 use CodeEmailMkt\Domain\Repository\ClientRepositoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
@@ -22,6 +23,16 @@ class ClientCreatePageAction
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
     {
+        if ($request->getMethod() == 'POST') {
+            $data = $request->getParsedBody();
+            $entity = new Client();
+            $entity
+                ->setName($data['name'])
+                ->setEmail($data['email'])
+                ->setCpf($data['cpf'])
+                ;
+            $this->repository->create($entity);
+        }
         return new HtmlResponse($this->template->render('app::clients/create'));
     }
 }

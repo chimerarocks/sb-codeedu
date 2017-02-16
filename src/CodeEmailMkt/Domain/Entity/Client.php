@@ -39,6 +39,7 @@ class Client
     public function setEmail($email)
     {
         $this->email = $email;
+        return $this;
     }
 
     public function getEmail()
@@ -49,6 +50,7 @@ class Client
     public function setCpf($cpf)
     {
         $this->cpf = $cpf;
+        return $this;
     }
 
     public function getCpf()
