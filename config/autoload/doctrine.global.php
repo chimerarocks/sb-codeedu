@@ -15,6 +15,18 @@ return [
                     ]
                 ]
             ]
+        ],
+        'driver' => [
+            'CodeEmailMkt_driver' => [
+                'class' => 'Doctrine\ORM\Mapping\Driver\YamlDriver',
+                'cache' => 'array',
+                'paths' => [__DIR__ . '/../../src/CodeEmailMkt/Infrastructure/Persistence/Doctrine/ORM']
+            ],
+            'orm_default' => [
+                'drivers' => [
+                    'CodeEmailMkt\Domain\Entity' => 'CodeEmailMkt_driver'
+                ]
+            ]
         ]
     ]
 ];
