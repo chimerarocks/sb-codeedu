@@ -1,10 +1,9 @@
 <?php
+use CodeEmailMkt\Domain;
+use CodeEmailMkt\Infrastructure;
 use ZenPROPERTY;
-d\Expressive\Application;
 use Zend\Expressive\Container\ApplicationFactory;
 use Zend\Expressive\Helper;
-use CodeEmailMkt\Domain\Repository;
-use CodeEmailMkt\Infrastructure\Persistence;
 
 return [
     // Provides application-wide services.
@@ -25,14 +24,18 @@ return [
             Helper\UrlHelper::class => 
                 Helper\UrlHelperFactory::class,
             
-            Repository\ClientRepositoryInterface::class =>
-                Persistence\Doctrine\Repository\ClientRepositoryFactory::class,
+            Domain\Repository\ClientRepositoryInterface::class =>
+                Infrastructure\Persistence\Doctrine\Repository\ClientRepositoryFactory::class,
             
-            Repository\AddressRepositoryInterface::class =>
-                Persistence\Doctrine\Repository\AddressRepositoryFactory::class,
+            Domain\Repository\AddressRepositoryInterface::class =>
+                Infrastructure\Persistence\Doctrine\Repository\AddressRepositoryFactory::class,
             
             Aura\Session\Session::class =>
                 DaMess\Factory\AuraSessionFactory::class,
+
+            Domain\Service\FlashMessageInterface::class =>
+                Infrastructure\Service\FlashMessageFactory::class
+
         ],
         'aliases' => [
             'configuration' => 'config', //Doctrine needs a service called Configuration
