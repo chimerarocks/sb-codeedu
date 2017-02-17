@@ -31,18 +31,17 @@ class ClientUpdatePageAction
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
     {
-        $flash = $request->getAttribute('flash');
         $id = $request->getAttribute('id');
         $client = $this->repository->find($id);
         if ($request->getMethod() == 'POST') {
+            $flash = $request->getAttribute('flash');
             $data = $request->getParsedBody();
-            $entity = new Client();
-            $entity
+            $client
                 ->setName($data['name'])
                 ->setEmail($data['email'])
                 ->setCpf($data['cpf'])
                 ;
-            $this->repository->create($entity);
+            $this->repository->update($client);
             $flash->setMessage('success', 'Contato cadastrado com sucesso');
 
             $uri = $this->router->generateUri('admin.clients.list');

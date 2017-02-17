@@ -31,8 +31,8 @@ class ClientCreatePageAction
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
     {
-        $flash = $request->getAttribute('flash');
         if ($request->getMethod() == 'POST') {
+            $flash = $request->getAttribute('flash');
             $data = $request->getParsedBody();
             $entity = new Client();
             $entity
