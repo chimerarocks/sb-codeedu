@@ -1,7 +1,10 @@
 <?php
-use Zend\Expressive\Application;
+use ZenPROPERTY;
+d\Expressive\Application;
 use Zend\Expressive\Container\ApplicationFactory;
 use Zend\Expressive\Helper;
+use CodeEmailMkt\Domain\Repository;
+use CodeEmailMkt\Infrastructure\Persistence;
 
 return [
     // Provides application-wide services.
@@ -18,11 +21,18 @@ return [
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories' => [
             Application::class => ApplicationFactory::class,
-            Helper\UrlHelper::class => Helper\UrlHelperFactory::class,
-            \CodeEmailMkt\Domain\Repository\ClientRepositoryInterface::class =>
-                \CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\ClientRepositoryFactory::class,
-            \CodeEmailMkt\Domain\Repository\AddressRepositoryInterface::class =>
-                \CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\AddressRepositoryFactory::class,
+            
+            Helper\UrlHelper::class => 
+                Helper\UrlHelperFactory::class,
+            
+            Repository\ClientRepositoryInterface::class =>
+                Persistence\Doctrine\Repository\ClientRepositoryFactory::class,
+            
+            Repository\AddressRepositoryInterface::class =>
+                Persistence\Doctrine\Repository\AddressRepositoryFactory::class,
+            
+            Aura\Session\Session::class =>
+                DaMess\Factory\AuraSessionFactory::class,
         ],
         'aliases' => [
             'configuration' => 'config', //Doctrine needs a service called Configuration

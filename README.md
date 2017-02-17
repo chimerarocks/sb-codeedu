@@ -39,3 +39,13 @@ commit: 'yaml mapping of entities'
 commit: 'repositories'
 
 commit: 'listing clients route + repository + action + config'
+
+
+## Flash Message 
+
+Usar Aurea.Session, como ponte deve se usar 
+damess/expressive-session-middleware
+
+copiar o arquivo session.global.php da pasta damess/config no vendor para o autoload
+
+inserir AueraSession no container
