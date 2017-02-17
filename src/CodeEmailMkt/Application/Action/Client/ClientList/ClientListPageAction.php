@@ -24,9 +24,11 @@ class ClientListPageAction
     {
         $clients = $this->repository->findAll();
 
-        echo $request->getAttribute('flash')->getMessage('success');
+        $flash = $request->getAttribute('flash');
+        
         return new HtmlResponse($this->template->render('app::clients/list', [
-            'clients' => $clients
+            'clients' => $clients,
+            'message' => $flash->getMessage('success')
         ]));
     }
 }
