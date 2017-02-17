@@ -17,7 +17,8 @@ trait RepositoryBaseTrait
 
     public function update($entity)
     {
-        //Testa se a entidade está gerenciada
+        //Testa se a entidade está gerenciada, otimiza quando a entitade for buscada anteriormente
+        //com find, nesse caso a entidade já estará gerenciada
         if ($this->getEntityManager()->getUnitOfWork()->getEntityState($entity) != UnitOfWork::STATE_MANAGED) {
             //Pega algo que não está gerenciado, verifica o que existe no banco e faz a atualização
             $this->getEntityManager()->merge($entity);

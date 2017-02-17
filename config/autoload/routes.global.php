@@ -15,6 +15,8 @@ return [
                 Client\ClientList\ClientListPageFactory::class,
             Client\ClientCreate\ClientCreatePageAction::class =>
                 Client\ClientCreate\ClientCreatePageFactory::class,
+            Client\ClientUpdate\ClientUpdatePageAction::class =>
+                Client\ClientUpdate\ClientUpdatePageFactory::class,
         ],
     ],
 
@@ -42,6 +44,15 @@ return [
             'path' => '/admin/clientes/novo',
             'middleware' => CodeEmailMkt\Application\Action\Client\ClientCreate\ClientCreatePageAction::class,
             'allowed_methods' => ['GET', 'POST'],
+        ],
+        [
+            'name' => 'admin.clients.update',
+            'path' => '/admin/clientes/editar/{id}',
+            'middleware' => CodeEmailMkt\Application\Action\Client\ClientUpdate\ClientUpdatePageAction::class,
+            'allowed_methods' => ['GET', 'POST'],
+            'options' => [
+                'id' => '\d+'
+            ]
         ],
     ],
 ];
