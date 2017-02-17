@@ -49,3 +49,5 @@ damess/expressive-session-middleware
 copiar o arquivo session.global.php da pasta damess/config no vendor para o autoload
 
 inserir AueraSession no container
+
+O flash message foi usado como atributo da request, sendo injetado no bootstrap middleware

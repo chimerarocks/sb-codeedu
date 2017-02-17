@@ -7,6 +7,7 @@ use CodeEmailMkt\Domain\Repository\ClientRepositoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
+use Zend\Diactoros\Response\RedirectResponse;
 use Zend\Expressive\Template;
 
 class ClientCreatePageAction
@@ -23,6 +24,7 @@ class ClientCreatePageAction
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
     {
+        $flash = $request->getAttribute('flash');
         if ($request->getMethod() == 'POST') {
             $data = $request->getParsedBody();
             $entity = new Client();
@@ -32,6 +34,9 @@ class ClientCreatePageAction
                 ->setCpf($data['cpf'])
                 ;
             $this->repository->create($entity);
+            $flash->setMessage('success', 'Contato cadastrado com sucesso');
+            return new RedirectResponse('/admin/clientes');
+
         }
         return new HtmlResponse($this->template->render('app::clients/create'));
     }
