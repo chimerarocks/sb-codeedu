@@ -2,6 +2,7 @@
 use CodeEmailMkt\Domain;
 use CodeEmailMkt\Infrastructure;
 use ZenPROPERTY;
+use Zend\Expressive\Application;
 use Zend\Expressive\Container\ApplicationFactory;
 use Zend\Expressive\Helper;
 
@@ -23,6 +24,9 @@ return [
             
             Helper\UrlHelper::class => 
                 Helper\UrlHelperFactory::class,
+
+            Domain\Service\BootstrapInterface::class =>
+                Infrastructure\BootstrapFactory::class,
             
             Domain\Repository\ClientRepositoryInterface::class =>
                 Infrastructure\Persistence\Doctrine\Repository\ClientRepositoryFactory::class,
