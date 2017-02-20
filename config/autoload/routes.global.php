@@ -51,7 +51,7 @@ return [
             'name' => 'admin.clients.update',
             'path' => '/admin/clientes/editar/{id}',
             'middleware' => CodeEmailMkt\Application\Action\Client\ClientUpdate\ClientUpdatePageAction::class,
-            'allowed_methods' => ['GET', 'POST'],
+            'allowed_methods' => ['GET', 'PUT'],
             'options' => [
                 'id' => '\d+'
             ]
@@ -60,7 +60,7 @@ return [
             'name' => 'admin.clients.delete',
             'path' => '/admin/clientes/excluir/{id}',
             'middleware' => CodeEmailMkt\Application\Action\Client\ClientDelete\ClientDeletePageAction::class,
-            'allowed_methods' => ['GET', 'POST'],
+            'allowed_methods' => ['GET', 'DELETE'],
             'options' => [
                 'id' => '\d+'
             ]

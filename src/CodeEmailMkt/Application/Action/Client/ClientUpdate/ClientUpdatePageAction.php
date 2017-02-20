@@ -33,7 +33,7 @@ class ClientUpdatePageAction
     {
         $id = $request->getAttribute('id');
         $client = $this->repository->find($id);
-        if ($request->getMethod() == 'POST') {
+        if ($request->getMethod() == 'PUT') {
             $flash = $request->getAttribute('flash');
             $data = $request->getParsedBody();
             $client
