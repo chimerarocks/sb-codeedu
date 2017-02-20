@@ -43,6 +43,8 @@ return [
         ],
         'aliases' => [
             'configuration' => 'config', //Doctrine needs a service called Configuration
+            'Config'        => 'config',
+            'Configuration' => 'config'
         ],
     ],
 ];

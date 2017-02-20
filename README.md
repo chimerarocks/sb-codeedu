@@ -60,3 +60,13 @@ O flash message foi usado como atributo da request, sendo injetado no bootstrap 
 "zendframework/zend-form": "2.9.0",
 "zendframework/zend-i18n": "2.7.3",
 "zendframework/zend-view": "2.8.1"
+
+Para o helper do form funcione com o twig é necessário obter o twig environment
+
+Pra isso é necessário copiar as classes TwigRenderer e TwigRendererFactory
+TwigRenderer se refere ao TemplateInterface utilizado pela aplicação
+
+Lebrando de fazer as importações da Factory
+
+Em templates.global chamar a Factory Criada
+E criar um alias pra Config e Configuration
