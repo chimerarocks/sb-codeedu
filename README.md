@@ -72,3 +72,6 @@ Em templates.global chamar a Factory Criada
 E criar um alias pra Config e Configuration
 
 Integrar configurações do form.global com as configurações do Zend\Form
+HelperPluginManager é como um serviceContainers para os helpers da view
+
+Por fim é necessário integrar view_helpers com o twig em um Middleware
