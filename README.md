@@ -70,3 +70,5 @@ Lebrando de fazer as importações da Factory
 
 Em templates.global chamar a Factory Criada
 E criar um alias pra Config e Configuration
+
+Integrar configurações do form.global com as configurações do Zend\Form
