@@ -51,3 +51,12 @@ copiar o arquivo session.global.php da pasta damess/config no vendor para o auto
 inserir AueraSession no container
 
 O flash message foi usado como atributo da request, sendo injetado no bootstrap middleware
+
+## Zend Form 
+
+É necessário fazer algumas atualizações:
+
+"zendframework/zend-servicemanager": "^3.0",
+"zendframework/zend-form": "2.9.0",
+"zendframework/zend-i18n": "2.7.3",
+"zendframework/zend-view": "2.8.1"
