@@ -17,6 +17,8 @@ return [
                 Client\ClientCreate\ClientCreatePageFactory::class,
             Client\ClientUpdate\ClientUpdatePageAction::class =>
                 Client\ClientUpdate\ClientUpdatePageFactory::class,
+            Client\ClientDelete\ClientDeletePageAction::class =>
+                Client\ClientDelete\ClientDeletePageFactory::class,
         ],
     ],
 
@@ -54,5 +56,14 @@ return [
                 'id' => '\d+'
             ]
         ],
+        [
+            'name' => 'admin.clients.delete',
+            'path' => '/admin/clientes/excluir/{id}',
+            'middleware' => CodeEmailMkt\Application\Action\Client\ClientDelete\ClientDeletePageAction::class,
+            'allowed_methods' => ['GET', 'POST'],
+            'options' => [
+                'id' => '\d+'
+            ]
+        ]
     ],
 ];

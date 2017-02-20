@@ -42,8 +42,8 @@
 				            </td>
 				            <td>
 				                <a href="{{ url('admin.clients.update', {'id': client.id}) }}">Editar</a>
-				                {# |
-				                <a href="{{ url('client.delete', {'id': client.id}) }}">Excluir</a> #}
+				                |
+				                <a href="{{ url('admin.clients.delete', {'id': client.id}) }}">Excluir</a>
 				            </td>
 				        </tr>
 				        {% endfor %}
