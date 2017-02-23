@@ -2,6 +2,8 @@
 
 namespace CodeEmailMkt\Application\Action\Client\ClientUpdate;
 
+use CodeEmailMkt\Application\Form\ClientForm;
+use CodeEmailMkt\Application\Form\HttpMethodElement;
 use CodeEmailMkt\Domain\Entity\Client;
 use CodeEmailMkt\Domain\Repository\ClientRepositoryInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -14,40 +16,48 @@ use Zend\Expressive\Template;
 class ClientUpdatePageAction
 {
     private $repository;
-
     private $template;
     private $router;
+    private $form;
 
     public function __construct(
-        ClientRepositoryInterface $repository, 
-        Template\TemplateRendererInterface $template,
-        RouterInterface $router
+        ClientRepositoryInterface           $repository, 
+        Template\TemplateRendererInterface  $template,
+        RouterInterface                     $router,
+        ClientForm                          $form
         )
     {
-        $this->repository = $repository;
-        $this->template = $template;
-        $this->router = $router;
+        $this->repository   = $repository;
+        $this->template     = $template;
+        $this->router       = $router;
+        $this->form         = $form;
     }
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
     {
         $id = $request->getAttribute('id');
-        $client = $this->repository->find($id);
+        $entity = $this->repository->find($id);
+        
+        $this->form->add(new HttpMethodElement('PUT'));
+        $this->form->bind($entity);
+
         if ($request->getMethod() == 'PUT') {
-            $flash = $request->getAttribute('flash');
-            $data = $request->getParsedBody();
-            $client
-                ->setName($data['name'])
-                ->setEmail($data['email'])
-                ->setCpf($data['cpf'])
-                ;
-            $this->repository->update($client);
-            $flash->setMessage('success', 'Contato cadastrado com sucesso');
-
-            $uri = $this->router->generateUri('admin.clients.list');
-            return new RedirectResponse($uri);
-
+            $dataRow = $request->getParsedBody();
+            $this->form->setData($dataRow);
+            if ($this->form->isValid()) {
+                $flash = $request->getAttribute('flash');
+                $entity = $this->form->getData();
+                $this->repository->update($entity);
+                $flash = $request->getAttribute('flash');
+                $flash->setMessage('success', 'Contato atualizado com sucesso');
+                
+                return new RedirectResponse(
+                    $this->router->generateUri('admin.clients.list')
+                );
+            }
         }
-        return new HtmlResponse($this->template->render('app::clients/update', ['client' => $client]));
+        return new HtmlResponse($this->template->render('app::clients/update', [
+            'form' => $this->form
+        ]));
     }
 }

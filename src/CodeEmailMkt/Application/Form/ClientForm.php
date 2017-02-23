@@ -2,8 +2,9 @@
 
 namespace CodeEmailMkt\Application\Form;
 
-use Zend\Form\Form;
 use Zend\Form\Element;
+use Zend\Form\Form;
+use Zend\Stdlib\Hydrator\ClassMethods;
 
 class ClientForm extends Form
 {

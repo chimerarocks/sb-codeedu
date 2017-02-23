@@ -10,6 +10,8 @@ $forms = [
 		'factories' => [
 			Zend\View\HelperPluginManager::class => 
 				CodeEmailMkt\Infrastructure\View\HelperPluginManagerFactory::class,
+			CodeEmailMkt\Application\Form\ClientForm::class =>
+				CodeEmailMkt\Application\Form\Factory\ClientFormFactory::class
 		]
 	],
 	'view_helpers' => [

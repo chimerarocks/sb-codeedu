@@ -7,9 +7,10 @@ use Zend\Expressive\Helper;
 return [
     'dependencies' => [
         'factories' => [
-            Helper\ServerUrlMiddleware::class => Helper\ServerUrlMiddlewareFactory::class,
-            Helper\UrlHelperMiddleware::class => Helper\UrlHelperMiddlewareFactory::class,
-            Middleware\BootstrapMiddleware::class => Middleware\BootstrapMiddlewareFactory::class,
+            Helper\ServerUrlMiddleware::class       => Helper\ServerUrlMiddlewareFactory::class,
+            Helper\UrlHelperMiddleware::class       => Helper\UrlHelperMiddlewareFactory::class,
+            Middleware\BootstrapMiddleware::class   => Middleware\BootstrapMiddlewareFactory::class,
+            Middleware\TwigMiddleware::class        => Middleware\TwigMiddlewareFactory::class,
         ],
     ],
     // This can be used to seed pre- and/or post-routing middleware
@@ -44,6 +45,7 @@ return [
                 // - modifications to outgoing responses
                 Helper\ServerUrlMiddleware::class,
                 Middleware\BootstrapMiddleware::class,
+                Middleware\TwigMiddleware::class,
             ],
             'priority' => 10000,
         ],
