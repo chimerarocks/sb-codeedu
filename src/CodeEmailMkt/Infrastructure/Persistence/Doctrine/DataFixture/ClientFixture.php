@@ -5,6 +5,7 @@ namespace CodeEmailMkt\Infrastructure\Persistence\Doctrine\DataFixture;
 use CodeEmailMkt\Domain\Entity\Client;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory as Faker;
 
 class ClientFixture implements FixtureInterface
 {
@@ -14,12 +15,17 @@ class ClientFixture implements FixtureInterface
 	 */
 	public function load(ObjectManager $manager)
 	{
-		$client = new Client();
-		$client->setName('João Pedro')
-			->setEmail('joaopedrodslv@gmail.com')
-			->setCpf('99999999999')
-			;
-		$manager->persist($client);
+		$faker = Faker::create();
+
+		foreach (range(1,100) as $value) {
+			$client = new Client();
+			$client->setName($faker->firstName . ' ' . $faker->lastName)
+				->setEmail($faker->email)
+				->setCpf($faker->randomNumber(5))
+				;
+			$manager->persist($client);
+		}
+
 		$manager->flush();
 	}
 }
