@@ -103,3 +103,15 @@ E no doctrine-config.global.php
     ...
 ]
 ```
+
+E no doctrine.local.php, como as configurações são locais.
+
+```php
+[
+    ...
+    'fixtures' => [
+        'MyFixture' => __DIR__ . '/../../src/CodeEmailMkt/Infrastructure/Persistence/Doctrine/DataFixture'
+    ]
+    ...
+]
+```
