@@ -77,3 +77,29 @@ HelperPluginManager é como um serviceContainers para os helpers da view
 Por fim é necessário integrar view_helpers com o twig em um Middleware
 
 Após criar o form é necessário criar um Hydrator pra facilitar a manipulação.
+
+## Data fixtures com Doctrine
+
+zendexpr-doctrine-fixture para facilitar por linha de comando
+faker para criar os dados
+
+Para criar o comando de fixtures importar a factory no dependencies
+
+```php
+[
+    ...
+    'doctrine:fixtures_cmd:load' =>
+                CodeEdu\FixtureFactory::class
+    ...
+]
+```
+
+E no doctrine-config.global.php
+
+```php
+[
+    ...
+    'doctrine:fixtures_cmd:load',
+    ...
+]
+```

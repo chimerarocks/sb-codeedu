@@ -1,7 +1,6 @@
 <?php
 use CodeEmailMkt\Domain;
 use CodeEmailMkt\Infrastructure;
-use ZenPROPERTY;
 use Zend\Expressive\Application;
 use Zend\Expressive\Container\ApplicationFactory;
 use Zend\Expressive\Helper;
@@ -38,7 +37,11 @@ return [
                 DaMess\Factory\AuraSessionFactory::class,
 
             Domain\Service\FlashMessageInterface::class =>
-                Infrastructure\Service\FlashMessageFactory::class
+                Infrastructure\Service\FlashMessageFactory::class,
+
+            // Para criar o comando de fixtures
+            'doctrine:fixtures_cmd:load' =>
+                CodeEdu\FixtureFactory::class,
 
         ],
         'aliases' => [
