@@ -2,11 +2,11 @@
 
 namespace CodeEmailMkt\Application\Form\Factory;
 
-use Zend\Hydrator\ClassMethods;
+use CodeEmailMkt\Application\Form\ClientForm;
+use CodeEmailMkt\Application\InputFilter\ClientInputFilter;
 use CodeEmailMkt\Domain\Entity\Client;
 use Interop\Container\ContainerInterface;
-use CodeEmailMkt\Application\Form\ClientForm;
-// use CodeEmailMkt\Application\InputFilter\ClientInputFilter;
+use Zend\Hydrator\ClassMethods;
 
 class ClientFormFactory
 {
@@ -15,7 +15,7 @@ class ClientFormFactory
 		$form = new ClientForm();
 		$form->setHydrator(new ClassMethods());
 		$form->setObject(new Client());
-		// $form->setInputFilter(new ClientInputFilter());
+		$form->setInputFilter(new ClientInputFilter());
 
 		return $form;		
 	}

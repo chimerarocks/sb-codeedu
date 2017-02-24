@@ -1,15 +1,26 @@
+{% set name = form.get('name') %}
+{% set messageName = formElementErrors(name, {class: 'help-block'}) %}
+
+{% set cpf = form.get('cpf') %}
+{% set messageCpf = formElementErrors(cpf, {class: 'help-block'}) %}
+
 {% set email = form.get('email') %}
-{% set message = formElementErrors(email, {class: 'help-block'}) %}
+{% set messageEmail = formElementErrors(email, {class: 'help-block'}) %}
+
 <div class="box-body">
-	<div class="form-group">
-		{{ formRow(form.get('name')) }}
+	<div class="form-group {{ messageName ? 'has-error'}}">
+		{{ formLabel(name) }}
+		{{ formElement(name) }}
+		{{ messageName | raw }}
 	</div>
-	<div class="form-group">
-		{{ formRow(form.get('cpf')) }}
+	<div class="form-group {{ messageCpf ? 'has-error'}}">
+		{{ formLabel(cpf) }}
+		{{ formElement(cpf) }}
+		{{ messageCpf | raw }}
 	</div>
-	<div class="form-group {{ message ? 'has-error'}}">
+	<div class="form-group {{ messageEmail ? 'has-error'}}">
 		{{ formLabel(email) }}
 		{{ formElement(email) }}
-		{{ message | raw }}
+		{{ messageEmail | raw }}
 	</div>
 </div>

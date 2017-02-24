@@ -47,7 +47,7 @@ class ClientInputFilter extends InputFilter
 					]
 				]
 			]
-		])
+		]);
 
 		$this->add([
 			'name' 		 => 'email',
@@ -73,6 +73,6 @@ class ClientInputFilter extends InputFilter
 					]
 				]
 			]
-		])
+		]);
 	}
 }
