@@ -35,6 +35,9 @@ class LoginPageAction
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
     {
+        $renderParams = [
+            'form' => $this->form
+        ];
         if ($request->getMethod() == 'POST') {
             $data = $request->getParsedBody();
             $this->form->setData($data);
@@ -45,12 +48,12 @@ class LoginPageAction
                         $this->router->generateUri('admin.clients.list')
                     );
                 }
+                $renderParams['message'] = 'Login e/ou senha inválidos.';
+                $renderParams['messageType'] = 'error';
             }
         }
 
 
-        return new HtmlResponse($this->template->render('app::login', [
-            'form' => $this->form
-        ]));
+        return new HtmlResponse($this->template->render('app::login', $renderParams));
     }
 }
