@@ -1,6 +1,7 @@
 <?php
 
 use CodeEmailMkt\Application\Action\Client;
+use CodeEmailMkt\Application\Action;
 
 return [
     'dependencies' => [
@@ -19,6 +20,8 @@ return [
                 Client\ClientUpdate\ClientUpdatePageFactory::class,
             Client\ClientDelete\ClientDeletePageAction::class =>
                 Client\ClientDelete\ClientDeletePageFactory::class,
+            Action\LoginPageAction::class =>
+                Action\LoginPageFactory::class
         ],
     ],
 
@@ -28,6 +31,12 @@ return [
             'path' => '/',
             'middleware' => CodeEmailMkt\Application\Action\HomePageAction::class,
             'allowed_methods' => ['GET'],
+        ],
+        [
+            'name' => 'auth.login',
+            'path' => '/auth/login',
+            'middleware' => CodeEmailMkt\Application\Action\LoginPageAction::class,
+            'allowed_methods' => ['GET', 'POST'],
         ],
         [
             'name' => 'api.ping',
