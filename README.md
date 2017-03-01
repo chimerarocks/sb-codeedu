@@ -155,3 +155,42 @@ Criar um alias para facilitar a utilização do serviço
 ```
 
 Criar o AuthService
+
+Para gerar a senha criptografada foi criado um método na entidade User chamado generatePassword
+
+```php
+    /**
+     * Verifica se foi atribuída alguma senha,
+     * se sim gera uma criptografia a partir dela,
+     * se não gera uma criptografia aleatória
+     */
+    public function generatePassword()
+    {
+        $password = $this->getPlainPassword() ? $this->getPlainPassword() : uniqid();
+        $this->setPassword(password_hash($password, PASSWORD_BCRYPT));
+    }
+```
+
+e adicionado esse metodo no lifeCycle do Doctrine no arquivo yml de User
+
+```yaml
+lifeCycleCallbacks:
+    prePersist: [generatePassword]
+```
+
+e por último em doctrine.global foi adicionado um callback de verificação de senha
+
+```php
+'authentication' => [
+    'orm_default' => [
+        'object_manager' => \Doctrine\ORM\EntityManager::class,
+        'identity_class' => User::class,
+        'identity_property' => 'email',
+        'credential_property' => 'password',
+        'credential_callable' => function(User $user, $passwordGiven) {
+            return password_verify($passwordGiven, $user->getPassword());
+        }
+    ]
+]
+```
+
