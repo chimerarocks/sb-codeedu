@@ -1,6 +1,7 @@
 <?php
 use CodeEmailMkt\Domain;
 use CodeEmailMkt\Infrastructure;
+use Zend\Authentication\AuthenticationService;
 use Zend\Expressive\Application;
 use Zend\Expressive\Container\ApplicationFactory;
 use Zend\Expressive\Helper;
@@ -47,7 +48,8 @@ return [
         'aliases' => [
             'configuration' => 'config', //Doctrine needs a service called Configuration
             'Config'        => 'config',
-            'Configuration' => 'config'
+            'Configuration' => 'config',
+            AuthenticationService::class => 'doctrine.authenticationservice.orm_default'
         ],
     ],
 ];

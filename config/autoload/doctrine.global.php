@@ -27,6 +27,13 @@ return [
                     'CodeEmailMkt\Domain\Entity' => 'CodeEmailMkt_driver'
                 ]
             ]
-        ]
+        ],
+        'authentication' => [
+            'orm_default' => [
+            'object_manager' => \Doctrine\ORM\EntityManager::class,
+            'identity_class' => \CodeEmailMkt\Domain\Entity\User::class,
+            'identity_property' => 'email',
+            'credential_property' => 'password',
+        ],
     ]
 ];

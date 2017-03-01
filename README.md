@@ -115,3 +115,42 @@ E no doctrine.local.php, como as configurações são locais.
     ...
 ]
 ```
+
+##Autenticação
+
+Para trabalhar com autenticação é necessário instalar a Zend-session, ou outra biblioteca de controle de sessão para o php.
+
+composer require zendframework/zend-session, nesse caso foi instalada a versão ':2.7.3'
+
+Em doctrine.global.php inserir as configurações de autenticação:
+
+```php
+[
+    ...
+    'authentication' => [
+            'orm_default' => [
+            'object_manager' => \Doctrine\ORM\EntityManager::class,
+                'identity_class' => \CodeEmailMkt\Domain\Entity\User::class,
+                'identity_property' => 'email',
+                'credential_property' => 'password',
+            ]
+    ],
+    ...
+]
+```
+ 
+Criar um alias para facilitar a utilização do serviço
+
+```php
+[
+    ...
+    'aliases' => [
+            ...
+            AuthenticationService::class 
+                => 'doctrine.authenticationservice.orm_default'
+            ...
+    ],
+    ...
+]
+```
+
