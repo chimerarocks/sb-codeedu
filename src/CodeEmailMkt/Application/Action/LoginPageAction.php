@@ -30,6 +30,20 @@ class LoginPageAction
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
     {
+        if ($request->getMethod() == 'POST') {
+            $data = $request->getParsedBody();
+            $this->form->setData($data);
+            if ($this->form->isValid()) {
+                // $user = $this->form->getData();
+                // if ($this->auth->authenticate($user['email'], $user['password'])) {
+                //     return new RedirectResponse(
+                //         $this->router->generateUri('customer.list')
+                //     );
+                // }
+            }
+        }
+
+
         return new HtmlResponse($this->template->render('app::login', [
             'form' => $this->form
         ]));
