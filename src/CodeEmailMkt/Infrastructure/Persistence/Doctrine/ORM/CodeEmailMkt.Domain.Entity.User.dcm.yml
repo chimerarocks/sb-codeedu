@@ -19,5 +19,5 @@ CodeEmailMkt\Domain\Entity\User:
     password:
       type: string
       length: 60
-  lifeCycleCallbacks:
+  lifecycleCallbacks:
       prePersist: [generatePassword]

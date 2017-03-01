@@ -174,7 +174,7 @@ Para gerar a senha criptografada foi criado um método na entidade User chamado 
 e adicionado esse metodo no lifeCycle do Doctrine no arquivo yml de User
 
 ```yaml
-lifeCycleCallbacks:
+lifecycleCallbacks:
     prePersist: [generatePassword]
 ```
 

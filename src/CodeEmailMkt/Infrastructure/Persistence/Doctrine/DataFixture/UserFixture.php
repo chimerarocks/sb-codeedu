@@ -2,12 +2,12 @@
 
 namespace CodeEmailMkt\Infrastructure\Persistence\Doctrine\DataFixture;
 
-use CodeEmailMkt\Domain\Entity\Client;
+use CodeEmailMkt\Domain\Entity\User;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory as Faker;
 
-class ClientFixture implements FixtureInterface
+class UserFixture implements FixtureInterface
 {
 	/**
 	 * Load data fixtures with the passed EntityManager
@@ -17,13 +17,22 @@ class ClientFixture implements FixtureInterface
 	{
 		$faker = Faker::create();
 
-		foreach (range(1,20) as $value) {
-			$client = new Client();
-			$client->setName($faker->firstName . ' ' . $faker->lastName)
+		$user = new User();
+		$user
+			->setName('Admin')
+			->setEmail($faker->email)
+			->setPlainPassword(123456)
+		;
+		$manager->persist($user);
+
+		foreach (range(1,10) as $value) {
+			$user = new User();
+			$user
+				->setName($faker->firstName . ' ' . $faker->lastName)
 				->setEmail($faker->email)
-				->setCpf($faker->randomNumber(5))
-				;
-			$manager->persist($client);
+				->setPlainPassword(123456)
+			;
+			$manager->persist($user);
 		}
 
 		$manager->flush();
