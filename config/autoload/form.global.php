@@ -11,7 +11,9 @@ $forms = [
 			Zend\View\HelperPluginManager::class => 
 				CodeEmailMkt\Infrastructure\View\HelperPluginManagerFactory::class,
 			CodeEmailMkt\Application\Form\ClientForm::class =>
-				CodeEmailMkt\Application\Form\Factory\ClientFormFactory::class
+				CodeEmailMkt\Application\Form\Factory\ClientFormFactory::class,
+			CodeEmailMkt\Application\Form\LoginForm::class =>
+				CodeEmailMkt\Application\Form\Factory\LoginFormFactory::class
 		]
 	],
 	'view_helpers' => [
