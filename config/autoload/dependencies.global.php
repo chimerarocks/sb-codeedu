@@ -34,9 +34,6 @@ return [
             Domain\Repository\AddressRepositoryInterface::class =>
                 Infrastructure\Persistence\Doctrine\Repository\AddressRepositoryFactory::class,
             
-            Aura\Session\Session::class =>
-                DaMess\Factory\AuraSessionFactory::class,
-
             Domain\Service\FlashMessageInterface::class =>
                 Infrastructure\Service\FlashMessageFactory::class,
 

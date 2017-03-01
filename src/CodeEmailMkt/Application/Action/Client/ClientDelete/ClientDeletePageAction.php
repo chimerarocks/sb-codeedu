@@ -6,6 +6,7 @@ use CodeEmailMkt\Application\Form\ClientForm;
 use CodeEmailMkt\Application\Form\HttpMethodElement;
 use CodeEmailMkt\Domain\Entity\Client;
 use CodeEmailMkt\Domain\Repository\ClientRepositoryInterface;
+use CodeEmailMkt\Domain\Service\FlashMessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
@@ -42,7 +43,7 @@ class ClientDeletePageAction
         if (strtoupper($request->getMethod()) == 'DELETE') {
             $flash = $request->getAttribute('flash');
             $this->repository->remove($entity);
-            $flash->setMessage('success', 'Contato removido com sucesso');
+            $flash->setMessage(FlashMessageInterface::SUCCESS_MESSAGE, 'Contato removido com sucesso');
             
             return new RedirectResponse(
                 $this->router->generateUri('admin.clients.list')

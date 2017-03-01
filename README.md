@@ -194,3 +194,6 @@ e por último em doctrine.global foi adicionado um callback de verificação de 
 ]
 ```
 
+##Flash Message
+
+Por fim foi retirado as flash o pacote de Aura Session para flash messages e usado as flash messages do zendo mesmo.

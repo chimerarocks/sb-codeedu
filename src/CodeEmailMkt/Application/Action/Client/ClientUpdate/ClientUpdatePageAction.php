@@ -6,6 +6,7 @@ use CodeEmailMkt\Application\Form\ClientForm;
 use CodeEmailMkt\Application\Form\HttpMethodElement;
 use CodeEmailMkt\Domain\Entity\Client;
 use CodeEmailMkt\Domain\Repository\ClientRepositoryInterface;
+use CodeEmailMkt\Domain\Service\FlashMessageInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
@@ -49,7 +50,7 @@ class ClientUpdatePageAction
                 $entity = $this->form->getData();
                 $this->repository->update($entity);
                 $flash = $request->getAttribute('flash');
-                $flash->setMessage('success', 'Contato atualizado com sucesso');
+                $flash->setMessage(FlashMessageInterface::SUCCESS_MESSAGE, 'Contato atualizado com sucesso');
                 
                 return new RedirectResponse(
                     $this->router->generateUri('admin.clients.list')
