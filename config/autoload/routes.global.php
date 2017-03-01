@@ -21,7 +21,9 @@ return [
             Client\ClientDelete\ClientDeletePageAction::class =>
                 Client\ClientDelete\ClientDeletePageFactory::class,
             Action\LoginPageAction::class =>
-                Action\LoginPageFactory::class
+                Action\LoginPageFactory::class,
+            Action\LogoutAction::class =>
+                Action\LogoutFactory::class,
         ],
     ],
 
@@ -37,6 +39,12 @@ return [
             'path' => '/auth/login',
             'middleware' => CodeEmailMkt\Application\Action\LoginPageAction::class,
             'allowed_methods' => ['GET', 'POST'],
+        ],
+        [
+            'name' => 'auth.logout',
+            'path' => '/auth/logout',
+            'middleware' => CodeEmailMkt\Application\Action\LogoutAction::class,
+            'allowed_methods' => ['GET'],
         ],
         [
             'name' => 'api.ping',

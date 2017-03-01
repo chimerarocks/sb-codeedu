@@ -35,6 +35,6 @@ class AuthService implements AuthServiceInterface
 
 	public function destroy()
 	{
-		throw new \Exception('Method not implemented');
+		$this->authenticationService->clearIdentity();
 	}
 }
