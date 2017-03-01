@@ -154,3 +154,4 @@ Criar um alias para facilitar a utilização do serviço
 ]
 ```
 
+Criar o AuthService
