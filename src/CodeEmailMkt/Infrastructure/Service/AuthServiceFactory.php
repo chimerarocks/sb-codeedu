@@ -4,6 +4,7 @@ namespace CodeEmailMkt\Infrastructure\Service;
 
 use CodeEmailMkt\Infrastructure\Service\AuthService;
 use Interop\Container\ContainerInterface;
+use Zend\Authentication\AuthenticationService;
 
 class AuthServiceFactory
 {

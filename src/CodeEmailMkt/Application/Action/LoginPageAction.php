@@ -3,6 +3,7 @@
 namespace CodeEmailMkt\Application\Action;
 
 use CodeEmailMkt\Application\Form\LoginForm;
+use CodeEmailMkt\Domain\Service\AuthServiceInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response\HtmlResponse;
@@ -16,16 +17,19 @@ class LoginPageAction
     private $router;
     private $template;
     private $form;
+    private $authService;
 
     public function __construct(
-        Router\RouterInterface $router, 
-        Template\TemplateRendererInterface $template = null, 
-        LoginForm $form
+        Router\RouterInterface              $router, 
+        Template\TemplateRendererInterface  $template = null, 
+        LoginForm                           $form,
+        AuthServiceInterface                $authService
     )
     {
-        $this->router   = $router;
-        $this->template = $template;
-        $this->form = $form;
+        $this->router       = $router;
+        $this->template     = $template;
+        $this->form         = $form;
+        $this->authService  = $authService;
     }
 
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
@@ -34,12 +38,12 @@ class LoginPageAction
             $data = $request->getParsedBody();
             $this->form->setData($data);
             if ($this->form->isValid()) {
-                // $user = $this->form->getData();
-                // if ($this->auth->authenticate($user['email'], $user['password'])) {
-                //     return new RedirectResponse(
-                //         $this->router->generateUri('customer.list')
-                //     );
-                // }
+                $user = $this->form->getData();
+                if ($this->authService->authenticate($user['email'], $user['password'])) {
+                    return new RedirectResponse(
+                        $this->router->generateUri('admin.clients.list')
+                    );
+                }
             }
         }
 

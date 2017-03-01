@@ -16,7 +16,11 @@ class AuthService implements AuthServiceInterface
 
 	public function authenticate($email, $password)
 	{
-		throw new \Exception('Method not implemented');
+		$adapter = $this->authenticationService->getAdapter();
+		$adapter->setIdentity($email);
+		$adapter->setCredential($password);
+		$result = $this->authenticationService->authenticate();	
+		return $result->isValid();
 	}
 
 	public function isAuth()

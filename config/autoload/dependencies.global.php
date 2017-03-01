@@ -44,6 +44,9 @@ return [
             'doctrine:fixtures_cmd:load' =>
                 CodeEdu\FixtureFactory::class,
 
+            CodeEmailMkt\Domain\Service\AuthServiceInterface::class =>
+                CodeEmailMkt\Infrastructure\Service\AuthServiceFactory::class
+
         ],
         'aliases' => [
             'configuration' => 'config', //Doctrine needs a service called Configuration
