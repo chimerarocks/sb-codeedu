@@ -27,7 +27,7 @@ return [
 
             Domain\Service\BootstrapInterface::class =>
                 Infrastructure\BootstrapFactory::class,
-            
+
             Domain\Repository\ClientRepositoryInterface::class =>
                 Infrastructure\Persistence\Doctrine\Repository\ClientRepositoryFactory::class,
             

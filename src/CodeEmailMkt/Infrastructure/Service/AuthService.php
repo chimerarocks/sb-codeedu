@@ -25,12 +25,12 @@ class AuthService implements AuthServiceInterface
 
 	public function isAuth()
 	{
-		throw new \Exception('Method not implemented');
+		return $this->getUser() != null;
 	}
 
 	public function getUser()
 	{
-		throw new \Exception('Method not implemented');
+		return $this->authenticationService->getIdentity();
 	}
 
 	public function destroy()
