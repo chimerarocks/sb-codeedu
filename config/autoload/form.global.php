@@ -1,5 +1,7 @@
 <?php
 
+use Zend\View\Helper\Identity;
+
 $forms = [
 	'dependencies' => [
 		'aliases' => [
@@ -22,6 +24,7 @@ $forms = [
 		'invokables' => [
 		],
 		'factories' => [
+			'identity' => Identity::class
 		]
 	]
 ];

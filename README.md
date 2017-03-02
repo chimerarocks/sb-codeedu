@@ -197,3 +197,23 @@ e por último em doctrine.global foi adicionado um callback de verificação de 
 ##Flash Message
 
 Por fim foi retirado as flash o pacote de Aura Session para flash messages e usado as flash messages do zendo mesmo.
+
+##Obter usuário no front
+
+Utilizando o helper identity
+em form.global
+
+```php
+[
+    'view_helpers' => [
+        'aliases' => [
+        ],
+        'invokables' => [
+        ],
+        'factories' => [
+            'identity' => Identity::class
+        ]
+    ]
+]
+```
+
