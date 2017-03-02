@@ -20,7 +20,7 @@ class TwigRendererFactory
      * @return TwigRenderer
      * @throws Exception\InvalidConfigException for invalid config service values.
      */
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): TwigRenderer
     {
         $config   = $container->has('config') ? $container->get('config') : [];
 

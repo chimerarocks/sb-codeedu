@@ -1,10 +1,30 @@
 <?php
-use CodeEmailMkt\Domain;
-use CodeEmailMkt\Infrastructure;
+use CodeEmailMkt\Domain\Repository\{
+    ClientRepositoryInterface,
+    AddressRepositoryInterface
+};
+use CodeEmailMkt\Domain\Service\{
+    BootstrapInterface,
+    FlashMessageInterface,
+    AuthServiceInterface
+};
+use CodeEmailMkt\Infrastructure\Service\{
+    BootstrapFactory,
+    FlashMessageFactory,
+    AuthServiceFactory
+};
+use CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\{
+    ClientRepositoryFactory,
+    AddressRepositoryFactory
+};
 use Zend\Authentication\AuthenticationService;
 use Zend\Expressive\Application;
 use Zend\Expressive\Container\ApplicationFactory;
-use Zend\Expressive\Helper;
+use Zend\Expressive\Helper\{
+    UrlHelper,
+    UrlHelperFactory,
+    ServerUrlHelper
+};
 
 return [
     // Provides application-wide services.
@@ -16,33 +36,19 @@ return [
         // class name.
         'invokables' => [
             // Fully\Qualified\InterfaceName::class => Fully\Qualified\ClassName::class,
-            Helper\ServerUrlHelper::class => Helper\ServerUrlHelper::class,
+            ServerUrlHelper::class => ServerUrlHelper::class,
         ],
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories' => [
-            Application::class => ApplicationFactory::class,
-            
-            Helper\UrlHelper::class => 
-                Helper\UrlHelperFactory::class,
-
-            Domain\Service\BootstrapInterface::class =>
-                Infrastructure\BootstrapFactory::class,
-
-            Domain\Repository\ClientRepositoryInterface::class =>
-                Infrastructure\Persistence\Doctrine\Repository\ClientRepositoryFactory::class,
-            
-            Domain\Repository\AddressRepositoryInterface::class =>
-                Infrastructure\Persistence\Doctrine\Repository\AddressRepositoryFactory::class,
-            
-            Domain\Service\FlashMessageInterface::class =>
-                Infrastructure\Service\FlashMessageFactory::class,
-
+            Application::class                  => ApplicationFactory::class,
+            UrlHelper::class                    => UrlHelperFactory::class,
+            BootstrapInterface::class           => BootstrapFactory::class,
+            ClientRepositoryInterface::class    => ClientRepositoryFactory::class,
+            AddressRepositoryInterface::class   => AddressRepositoryFactory::class,
+            FlashMessageInterface::class        => FlashMessageFactory::class,
             // Para criar o comando de fixtures
-            'doctrine:fixtures_cmd:load' =>
-                CodeEdu\FixtureFactory::class,
-
-            CodeEmailMkt\Domain\Service\AuthServiceInterface::class =>
-                CodeEmailMkt\Infrastructure\Service\AuthServiceFactory::class
+            'doctrine:fixtures_cmd:load'    => CodeEdu\FixtureFactory::class,
+            AuthServiceInterface::class     => AuthServiceFactory::class
 
         ],
         'aliases' => [

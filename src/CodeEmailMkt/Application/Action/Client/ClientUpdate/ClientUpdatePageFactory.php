@@ -10,7 +10,7 @@ use Zend\Expressive\Template\TemplateRendererInterface;
 
 class ClientUpdatePageFactory
 {
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): ClientUpdatePageAction
     {
         $template   = $container->get(TemplateRendererInterface::class);
         $repository = $container->get(ClientRepositoryInterface::class);

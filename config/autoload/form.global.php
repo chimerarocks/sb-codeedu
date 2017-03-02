@@ -1,6 +1,9 @@
 <?php
 
-use Zend\View\Helper\Identity;
+use CodeEmailMkt\Application\Form\Factory\{ClientFormFactory, LoginFormFactory};
+use CodeEmailMkt\Application\Form\{ClientForm, LoginForm};
+use CodeEmailMkt\Infrastructure\View\HelperPluginManagerFactory;
+use Zend\View;
 
 $forms = [
 	'dependencies' => [
@@ -10,12 +13,9 @@ $forms = [
 		'invokables' => [
 		],
 		'factories' => [
-			Zend\View\HelperPluginManager::class => 
-				CodeEmailMkt\Infrastructure\View\HelperPluginManagerFactory::class,
-			CodeEmailMkt\Application\Form\ClientForm::class =>
-				CodeEmailMkt\Application\Form\Factory\ClientFormFactory::class,
-			CodeEmailMkt\Application\Form\LoginForm::class =>
-				CodeEmailMkt\Application\Form\Factory\LoginFormFactory::class
+			View\HelperPluginManager::class => HelperPluginManagerFactory::class,
+			ClientForm::class => ClientFormFactory::class,
+			LoginForm::class  => LoginFormFactory::class
 		]
 	],
 	'view_helpers' => [
@@ -24,7 +24,7 @@ $forms = [
 		'invokables' => [
 		],
 		'factories' => [
-			'identity' => Identity::class
+			'identity' => View\Helper\Identity::class
 		]
 	]
 ];

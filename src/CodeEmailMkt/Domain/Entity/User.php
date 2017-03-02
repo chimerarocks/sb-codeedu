@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace CodeEmailMkt\Domain\Entity;
 
@@ -20,7 +21,7 @@ class User
 		return $this->name;
 	}
 
-	public function setName($name)
+	public function setName(string $name)
 	{
 		$this->name = $name;
 		return $this;
@@ -31,7 +32,7 @@ class User
 		return $this->email;
 	}
 
-	public function setEmail($email)
+	public function setEmail(string $email)
 	{
 		$this->email = $email;
 		return $this;
@@ -53,7 +54,7 @@ class User
 		return $this->plainPassword;
 	}
 
-	public function setPlainPassword($plainPassword)
+	public function setPlainPassword(string $plainPassword)
 	{
 		$this->plainPassword = $plainPassword;
 		return $this;

@@ -8,9 +8,9 @@ use Zend\Expressive\Template\TemplateRendererInterface;
 
 class ClientListPageFactory
 {
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): ClientListPageAction
     {
-        $template = $container->get(TemplateRendererInterface::class);
+        $template 	= $container->get(TemplateRendererInterface::class);
         $repository = $container->get(ClientRepositoryInterface::class);
 
         return new ClientListPageAction($repository, $template);

@@ -8,7 +8,7 @@ use CodeEmailMkt\Domain\Entity\Client;
 
 class ClientRepositoryFactory
 {
-    public function __invoke(ContainerInterface $container)
+    public function __invoke(ContainerInterface $container): ClientRepository
     {
         $entityManager = $container->get(EntityManager::class);
         return $entityManager->getRepository(Client::class);

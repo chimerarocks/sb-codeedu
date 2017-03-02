@@ -6,7 +6,7 @@ use Interop\Container\ContainerInterface;
 
 class TwigMiddlewareFactory 
 {
-	public function __invoke(ContainerInterface $container)
+	public function __invoke(ContainerInterface $container): TwigMiddleware
 	{
 		$twigRenderer = $container->get(
 			\Zend\Expressive\Template\TemplateRendererInterface::class

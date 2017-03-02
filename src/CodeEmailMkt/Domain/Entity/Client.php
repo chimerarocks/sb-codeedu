@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 
 namespace CodeEmailMkt\Domain\Entity;
 
@@ -24,7 +25,7 @@ class Client
         return $this->id;
     }
 
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
 
@@ -36,7 +37,7 @@ class Client
         return $this->name;
     }
 
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
         return $this;
@@ -47,7 +48,7 @@ class Client
         return $this->email;
     }
 
-    public function setCpf($cpf)
+    public function setCpf(string $cpf)
     {
         $this->cpf = $cpf;
         return $this;

@@ -10,7 +10,7 @@ use Zend\Hydrator\ClassMethods;
 
 class ClientFormFactory
 {
-	public function __invoke(ContainerInterface $container)
+	public function __invoke(ContainerInterface $container): ClientForm
 	{
 		$form = new ClientForm();
 		$form->setHydrator(new ClassMethods());

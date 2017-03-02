@@ -1,18 +1,29 @@
 <?php
-use CodeEmailMkt\Application\Middleware;
+use CodeEmailMkt\Application\Middleware\{
+    BootstrapMiddleware,
+    BootstrapMiddlewareFactory,
+    TwigMiddleware,
+    TwigMiddlewareFactory,
+    AuthenticationMiddleware,
+    AuthenticationMiddlewareFactory
+};
 use CodeEmailMkt\Domain\Service\BootstrapInterface;
 use Zend\Expressive\Container\ApplicationFactory;
-use Zend\Expressive\Helper;
+use Zend\Expressive\Helper\{
+    ServerUrlMiddleware,
+    ServerUrlMiddlewareFactory,
+    UrlHelperMiddleware,
+    UrlHelperMiddlewareFactory
+};
 
 return [
     'dependencies' => [
         'factories' => [
-            Helper\ServerUrlMiddleware::class       => Helper\ServerUrlMiddlewareFactory::class,
-            Helper\UrlHelperMiddleware::class       => Helper\UrlHelperMiddlewareFactory::class,
-            Middleware\BootstrapMiddleware::class   => Middleware\BootstrapMiddlewareFactory::class,
-            Middleware\TwigMiddleware::class        => Middleware\TwigMiddlewareFactory::class,
-            Middleware\AuthenticationMiddleware::class => 
-                Middleware\AuthenticationMiddlewareFactory::class
+            ServerUrlMiddleware::class      => ServerUrlMiddlewareFactory::class,
+            UrlHelperMiddleware::class      => UrlHelperMiddlewareFactory::class,
+            BootstrapMiddleware::class      => BootstrapMiddlewareFactory::class,
+            TwigMiddleware::class           => TwigMiddlewareFactory::class,
+            AuthenticationMiddleware::class => AuthenticationMiddlewareFactory::class
         ],
     ],
     // This can be used to seed pre- and/or post-routing middleware
@@ -45,22 +56,22 @@ return [
                 // - bootstrapping
                 // - pre-conditions
                 // - modifications to outgoing responses
-                Helper\ServerUrlMiddleware::class,
-                Middleware\BootstrapMiddleware::class,
-                Middleware\TwigMiddleware::class,
+                ServerUrlMiddleware::class,
+                BootstrapMiddleware::class,
+                TwigMiddleware::class,
             ],
             'priority' => 10000,
         ],
         'admin' => [
             'path' => '/admin',
             'middleware' => [
-                Middleware\AuthenticationMiddleware::class
+                AuthenticationMiddleware::class
             ]
         ],
         'routing' => [
             'middleware' => [
                 ApplicationFactory::ROUTING_MIDDLEWARE,
-                Helper\UrlHelperMiddleware::class,
+                UrlHelperMiddleware::class,
                 // Add more middleware here that needs to introspect the routing
                 // results; this might include:
                 // - route-based authentication

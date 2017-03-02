@@ -1,6 +1,9 @@
 <?php
+declare(strict_types = 1);
 
 namespace CodeEmailMkt\Domain\Entity;
+
+use CodeEmailMkt\Domain\Entity\Client;
 
 class Address
 {
@@ -21,7 +24,7 @@ class Address
         return $this->id;
     }
 
-    public function setCep($cep)
+    public function setCep(string $cep)
     {
         $this->cep = $cep;
 
@@ -33,7 +36,7 @@ class Address
         return $this->cep;
     }
 
-    public function setStreet($street)
+    public function setStreet(string $street)
     {
         $this->street = $street;
     }
@@ -43,7 +46,7 @@ class Address
         return $this->street;
     }
 
-    public function setCity($city)
+    public function setCity(string $city)
     {
         $this->city = $city;
     }
@@ -53,7 +56,7 @@ class Address
         return $this->city;
     }
 
-    public function setState($state)
+    public function setState(string $state)
     {
         $this->state = $state;
     }
@@ -63,7 +66,7 @@ class Address
         return $this->state;
     }
 
-    public function setClient($client)
+    public function setClient(Client $client)
     {
         $this->client = $client;
     }
