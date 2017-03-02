@@ -26,3 +26,7 @@ CodeEmailMkt\Domain\Entity\Client:
       targetEntity: Address
       mappedBy: client
       cascade: ["persist", "merge"]
+  manyToMany:
+    tags:
+      targetEntity: CodeEmailMkt\Domain\Entity\Tag
+      mappedBy: clients

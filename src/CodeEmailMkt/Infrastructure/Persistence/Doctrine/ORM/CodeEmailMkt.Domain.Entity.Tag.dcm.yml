@@ -1,0 +1,18 @@
+#CodeEmailMkt.Domain.Entity.Tag.dcm.yml
+CodeEmailMkt\Domain\Entity\Tag:
+  type: entity
+  #repositoryClass: CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\TagRepository
+  table: tags
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    name:
+      type: string
+      length: 255
+  manyToMany:
+    clients:
+      targetEntity: CodeEmailMkt\Domain\Entity\Client
+      inversedBy: tags

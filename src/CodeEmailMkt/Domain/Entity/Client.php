@@ -3,6 +3,10 @@ declare(strict_types = 1);
 
 namespace CodeEmailMkt\Domain\Entity;
 
+use CodeEmailMkt\Domain\Entity\Address;
+use CodeEmailMkt\Domain\Entity\Tag;
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Client
 {
     protected $id;
@@ -15,9 +19,12 @@ class Client
 
     protected $addresses;
 
+    protected $tags;
+
     public function __construct()
     {
-        $this->addresses = [];
+        $this->addresses = new ArrayCollection();
+        $this->tags      = new ArrayCollection();
     }
 
     public function getId()
@@ -59,13 +66,25 @@ class Client
         return $this->cpf;
     }
 
-    public function addAddress($address)
+    public function addAddress(Address $address)
     {
-        array_push($this->addresses, $address);
+        $this->addresses->add($address);
+        return $this;
     }
 
     public function getAddresses()
     {
         return $this->addresses;
+    }
+
+    public function addTag(Tag $tag)
+    {
+        $this->tags->add($tag);
+        return $this;
+    }
+
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
