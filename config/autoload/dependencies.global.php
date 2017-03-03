@@ -1,22 +1,24 @@
 <?php
 use CodeEmailMkt\Domain\Repository\{
-    ClientRepositoryInterface,
     AddressRepositoryInterface,
+    CampaignRepositoryInterface,
+    ClientRepositoryInterface,
     TagRepositoryInterface
 };
 use CodeEmailMkt\Domain\Service\{
+    AuthServiceInterface
     BootstrapInterface,
     FlashMessageInterface,
-    AuthServiceInterface
 };
 use CodeEmailMkt\Infrastructure\Service\{
+    AuthServiceFactory
     BootstrapFactory,
     FlashMessageFactory,
-    AuthServiceFactory
 };
 use CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\{
-    ClientRepositoryFactory,
     AddressRepositoryFactory,
+    CampaignRepositoryFactory,
+    ClientRepositoryFactory,
     TagRepositoryFactory
 };
 use Zend\Authentication\AuthenticationService;
@@ -50,6 +52,7 @@ return [
             ClientRepositoryInterface::class    => ClientRepositoryFactory::class,
             AddressRepositoryInterface::class   => AddressRepositoryFactory::class,
             TagRepositoryInterface::class       => TagRepositoryFactory::class,
+            CampaignRepositoryInterface::class  => CampaignRepositoryFactory::class,
             
             FlashMessageInterface::class        => FlashMessageFactory::class,
             // Para criar o comando de fixtures

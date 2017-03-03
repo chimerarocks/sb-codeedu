@@ -29,6 +29,17 @@ use CodeEmailMkt\Application\Action\Tag\{
     TagDelete\TagDeletePageFactory
 };
 
+use CodeEmailMkt\Application\Action\Campaign\{
+    CampaignList\CampaignListPageAction,
+    CampaignList\CampaignListPageFactory,
+    CampaignCreate\CampaignCreatePageAction,
+    CampaignCreate\CampaignCreatePageFactory,
+    CampaignUpdate\CampaignUpdatePageAction,
+    CampaignUpdate\CampaignUpdatePageFactory,
+    CampaignDelete\CampaignDeletePageAction,
+    CampaignDelete\CampaignDeletePageFactory
+};
+
 use CodeEmailMkt\Application\Action\{
     LoginPageAction,
     LoginPageFactory,
@@ -50,6 +61,10 @@ return [
             TagCreatePageAction::class      => TagCreatePageFactory::class,
             TagUpdatePageAction::class      => TagUpdatePageFactory::class,
             TagDeletePageAction::class      => TagDeletePageFactory::class,
+            CampaignListPageAction::class   => CampaignListPageFactory::class,
+            CampaignCreatePageAction::class => CampaignCreatePageFactory::class,
+            CampaignUpdatePageAction::class => CampaignUpdatePageFactory::class,
+            CampaignDeletePageAction::class => CampaignDeletePageFactory::class,
             LoginPageAction::class          => LoginPageFactory::class,
             LogoutAction::class             => LogoutFactory::class,
         ],
@@ -131,6 +146,36 @@ return [
             'name' => 'admin.tags.delete',
             'path' => '/admin/tags/excluir/{id}',
             'middleware' => TagDeletePageAction::class,
+            'allowed_methods' => ['GET', 'DELETE'],
+            'options' => [
+                'id' => '\d+'
+            ]
+        ],
+        [
+            'name' => 'admin.campaigns.list',
+            'path' => '/admin/campaigns',
+            'middleware' => CampaignListPageAction::class,
+            'allowed_methods' => ['GET'],
+        ],
+        [
+            'name' => 'admin.campaigns.create',
+            'path' => '/admin/campaigns/novo',
+            'middleware' => CampaignCreatePageAction::class,
+            'allowed_methods' => ['GET', 'POST'],
+        ],
+        [
+            'name' => 'admin.campaigns.update',
+            'path' => '/admin/campaigns/editar/{id}',
+            'middleware' => CampaignUpdatePageAction::class,
+            'allowed_methods' => ['GET', 'PUT'],
+            'options' => [
+                'id' => '\d+'
+            ]
+        ],
+        [
+            'name' => 'admin.campaigns.delete',
+            'path' => '/admin/campaigns/excluir/{id}',
+            'middleware' => CampaignDeletePageAction::class,
             'allowed_methods' => ['GET', 'DELETE'],
             'options' => [
                 'id' => '\d+'

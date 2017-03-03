@@ -10,11 +10,11 @@ use Zend\Form\Element;
 use Zend\Form\Form;
 use Zend\Stdlib\Hydrator\ClassMethods;
 
-class ClientForm extends Form implements ObjectManagerAwareInterface
+class CampaignForm extends Form implements ObjectManagerAwareInterface
 {
 	private $objectManager;
 
-	public function __construct($name = 'client', array $options = [])
+	public function __construct($name = 'campaign', array $options = [])
 	{
 		parent::__construct($name, $options);
 	}
@@ -38,25 +38,13 @@ class ClientForm extends Form implements ObjectManagerAwareInterface
 		]);
 
 		$this->add([
-			'name' => 'email',
+			'name' => 'template',
 			'type' => Element\Text::class,
 			'options' => [
-				'label' => 'Email'
+				'label' => 'Template'
 			],
 			'attributes' => [
-				'id' => 'email',
-				'type' => 'email'
-			]
-		]);
-
-		$this->add([
-			'name' => 'cpf',
-			'type' => Element\Text::class,
-			'options' => [
-				'label' => 'Cpf'
-			],
-			'attributes' => [
-				'id' => 'cpf',
+				'id' => 'template'
 			]
 		]);
 
@@ -66,8 +54,7 @@ class ClientForm extends Form implements ObjectManagerAwareInterface
 			'options' => [
 				'object_manager' => $this->objectManager,
 				'target_class'   => Tag::class,
-				'property'		 => 'name',
-				'label'			 => 'Tags'
+				'property'		 => 'name'
 			],
 			'attributes' => [
 				'multiple' => 'multiple',

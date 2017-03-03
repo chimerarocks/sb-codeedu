@@ -8,7 +8,7 @@ use Zend\Stdlib\Hydrator\ClassMethods;
 
 class TagForm extends Form
 {
-	public function __construct($name = 'client', array $options = [])
+	public function __construct($name = 'tag', array $options = [])
 	{
 		parent::__construct($name, $options);
 

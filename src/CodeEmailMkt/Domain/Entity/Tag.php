@@ -13,9 +13,12 @@ class Tag
 
 	private $clients;
 
+	private $campaigns;
+
 	public function __construct()
 	{
 		$this->clients = new ArrayCollection();
+		$this->campaigns = new ArrayCollection();
 	}
 
 	public function getId()
@@ -48,6 +51,23 @@ class Tag
 	public function removeClient(Client $client)
 	{
 		$this->clients->removeElement($client);
+		return $this;
+	}
+
+	public function getCampaigns()
+	{
+		return $this->campaigns;
+	}
+
+	public function addCampaign(Campaign $campaign)
+	{
+		$this->campaigns->add($campaign);
+		return $this;
+	}
+
+	public function removeCampaign(Campaign $campaign)
+	{
+		$this->campaigns->removeElement($campaign);
 		return $this;
 	}
 }
