@@ -34,9 +34,6 @@ class CampaignInputFilter extends InputFilter
 		$this->add([
 			'name' 		 => 'template',
 			'required'	 => true,
-			'filters' 	 => [
-					['name' => StringTrim::class]
-			],
 			'validators' => [
 				[
 					'name'		=> NotEmpty::class,

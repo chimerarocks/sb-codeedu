@@ -2,7 +2,7 @@
 {% set messageName = formElementErrors(name, {class: 'help-block'}) %}
 
 {% set template = form.get('template') %}
-{% set messageCpf = formElementErrors(template, {class: 'help-block'}) %}
+{% set messageTemplate = formElementErrors(template, {class: 'help-block'}) %}
 
 <div class="box-body">
 	<div class="form-group {{ messageName ? 'has-error'}}">
@@ -10,10 +10,9 @@
 		{{ formElement(name) }}
 		{{ messageName | raw }}
 	</div>
-	<div class="form-group {{ messageCpf ? 'has-error'}}">
-		{{ formLabel(template) }}
-		{{ formElement(template) }}
-		{{ messageCpf | raw }}
+	<div class="form-group {{ messageTemplate ? 'has-error'}}">
+		{{ formRow(template) }}
+		{{ messageTemplate | raw }}
 	</div>
 	<div class="form-group">
 		{{ formRow(form.get('tags')) }}

@@ -20,7 +20,7 @@ class Campaign
 		$this->tags = new ArrayCollection();
 	}
 
-	public function getId(): int
+	public function getId()
 	{
 		return $this->id;
 	}
@@ -31,7 +31,7 @@ class Campaign
 		return $this;
 	}
 
-	public function getName(): string
+	public function getName()
 	{
 		return $this->name;
 	}
@@ -42,7 +42,7 @@ class Campaign
 		return $this;
 	}
 
-	public function getTemlate(): string
+	public function getTemplate()
 	{
 		return $this->template;
 	}

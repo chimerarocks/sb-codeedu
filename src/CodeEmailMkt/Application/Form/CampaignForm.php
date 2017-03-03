@@ -39,7 +39,7 @@ class CampaignForm extends Form implements ObjectManagerAwareInterface
 
 		$this->add([
 			'name' => 'template',
-			'type' => Element\Text::class,
+			'type' => Element\Textarea::class,
 			'options' => [
 				'label' => 'Template'
 			],
@@ -54,7 +54,8 @@ class CampaignForm extends Form implements ObjectManagerAwareInterface
 			'options' => [
 				'object_manager' => $this->objectManager,
 				'target_class'   => Tag::class,
-				'property'		 => 'name'
+				'property'		 => 'name',
+				'label' 		 => 'Tags'
 			],
 			'attributes' => [
 				'multiple' => 'multiple',
