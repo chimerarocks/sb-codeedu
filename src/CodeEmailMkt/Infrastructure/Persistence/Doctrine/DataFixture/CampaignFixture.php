@@ -27,6 +27,7 @@ class CampaignFixture extends AbstractFixture implements FixtureInterface, Order
 			$campaign
 				->setName($faker->country)
 				->setTemplate('')
+				->setSubject($faker->sentence(3))
 				;
 			$manager->persist($campaign);
 			$this->addReference("campaign-$key", $campaign);

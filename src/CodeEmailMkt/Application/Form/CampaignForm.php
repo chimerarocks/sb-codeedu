@@ -38,6 +38,17 @@ class CampaignForm extends Form implements ObjectManagerAwareInterface
 		]);
 
 		$this->add([
+			'name' => 'subject',
+			'type' => Element\Text::class,
+			'options' => [
+				'label' => 'Assunto'
+			],
+			'attributes' => [
+				'id' => 'subject'
+			]
+		]);
+
+		$this->add([
 			'name' => 'template',
 			'type' => Element\Textarea::class,
 			'options' => [

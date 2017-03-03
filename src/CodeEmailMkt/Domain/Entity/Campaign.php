@@ -13,6 +13,8 @@ class Campaign
 
 	private $template;
 
+	private $subject;
+
 	private $tags;
 
 	public function __construct()
@@ -45,6 +47,17 @@ class Campaign
 	public function getTemplate()
 	{
 		return $this->template;
+	}
+
+	public function setSubject(string $subject): Campaign
+	{
+		$this->subject = $subject;
+		return $this;
+	}
+
+	public function getSubject()
+	{
+		return $this->subject;
 	}
 
 	public function getTags()

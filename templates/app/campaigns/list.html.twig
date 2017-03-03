@@ -19,8 +19,11 @@
 				    		<th style="width: 10px">
 				    			#
 				    		</th>
-				    		<th>
+				    		<th style="width: 20%">
 				    			Campanha
+				    		</th>
+				    		<th>
+				    			Assunto
 				    		</th>
 				    		<th>
 				    			Ações
@@ -33,6 +36,9 @@
 				    		</td>
 				    		<td>
 				    			{{ campaign.name }}
+				    		</td>
+				    		<td>
+				    			{{ campaign.subject | slice(0,20) }}...
 				    		</td>
 				            <td>
 				                <a href="{{ url('admin.campaigns.update', {'id': campaign.id}) }}">Editar</a>
