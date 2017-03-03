@@ -57,7 +57,8 @@ return [
             FlashMessageInterface::class        => FlashMessageFactory::class,
             // Para criar o comando de fixtures
             'doctrine:fixtures_cmd:load'    => CodeEdu\FixtureFactory::class,
-            AuthServiceInterface::class     => AuthServiceFactory::class
+            AuthServiceInterface::class     => AuthServiceFactory::class,
+            Mailgun::class                  => MailgunFactory::class,
 
         ],
         'aliases' => [
