@@ -1,7 +1,7 @@
 #CodeEmailMkt.Domain.Entity.Tag.dcm.yml
 CodeEmailMkt\Domain\Entity\Tag:
   type: entity
-  #repositoryClass: CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\TagRepository
+  repositoryClass: CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\TagRepository
   table: tags
   id:
     id:

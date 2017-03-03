@@ -17,6 +17,18 @@ use CodeEmailMkt\Application\Action\Client\{
     ClientDelete\ClientDeletePageAction,
     ClientDelete\ClientDeletePageFactory
 };
+
+use CodeEmailMkt\Application\Action\Tag\{
+    TagList\TagListPageAction,
+    TagList\TagListPageFactory,
+    TagCreate\TagCreatePageAction,
+    TagCreate\TagCreatePageFactory,
+    TagUpdate\TagUpdatePageAction,
+    TagUpdate\TagUpdatePageFactory,
+    TagDelete\TagDeletePageAction,
+    TagDelete\TagDeletePageFactory
+};
+
 use CodeEmailMkt\Application\Action\{
     LoginPageAction,
     LoginPageFactory,
@@ -34,6 +46,10 @@ return [
             ClientCreatePageAction::class   => ClientCreatePageFactory::class,
             ClientUpdatePageAction::class   => ClientUpdatePageFactory::class,
             ClientDeletePageAction::class   => ClientDeletePageFactory::class,
+            TagListPageAction::class        => TagListPageFactory::class,
+            TagCreatePageAction::class      => TagCreatePageFactory::class,
+            TagUpdatePageAction::class      => TagUpdatePageFactory::class,
+            TagDeletePageAction::class      => TagDeletePageFactory::class,
             LoginPageAction::class          => LoginPageFactory::class,
             LogoutAction::class             => LogoutFactory::class,
         ],
@@ -85,6 +101,36 @@ return [
             'name' => 'admin.clients.delete',
             'path' => '/admin/clientes/excluir/{id}',
             'middleware' => ClientDeletePageAction::class,
+            'allowed_methods' => ['GET', 'DELETE'],
+            'options' => [
+                'id' => '\d+'
+            ]
+        ],
+        [
+            'name' => 'admin.tags.list',
+            'path' => '/admin/tags',
+            'middleware' => TagListPageAction::class,
+            'allowed_methods' => ['GET'],
+        ],
+        [
+            'name' => 'admin.tags.create',
+            'path' => '/admin/tags/novo',
+            'middleware' => TagCreatePageAction::class,
+            'allowed_methods' => ['GET', 'POST'],
+        ],
+        [
+            'name' => 'admin.tags.update',
+            'path' => '/admin/tags/editar/{id}',
+            'middleware' => TagUpdatePageAction::class,
+            'allowed_methods' => ['GET', 'PUT'],
+            'options' => [
+                'id' => '\d+'
+            ]
+        ],
+        [
+            'name' => 'admin.tags.delete',
+            'path' => '/admin/tags/excluir/{id}',
+            'middleware' => TagDeletePageAction::class,
             'allowed_methods' => ['GET', 'DELETE'],
             'options' => [
                 'id' => '\d+'

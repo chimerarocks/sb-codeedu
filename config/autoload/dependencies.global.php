@@ -1,7 +1,8 @@
 <?php
 use CodeEmailMkt\Domain\Repository\{
     ClientRepositoryInterface,
-    AddressRepositoryInterface
+    AddressRepositoryInterface,
+    TagRepositoryInterface
 };
 use CodeEmailMkt\Domain\Service\{
     BootstrapInterface,
@@ -15,7 +16,8 @@ use CodeEmailMkt\Infrastructure\Service\{
 };
 use CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\{
     ClientRepositoryFactory,
-    AddressRepositoryFactory
+    AddressRepositoryFactory,
+    TagRepositoryFactory
 };
 use Zend\Authentication\AuthenticationService;
 use Zend\Expressive\Application;
@@ -43,8 +45,12 @@ return [
             Application::class                  => ApplicationFactory::class,
             UrlHelper::class                    => UrlHelperFactory::class,
             BootstrapInterface::class           => BootstrapFactory::class,
+
+            // Repositories
             ClientRepositoryInterface::class    => ClientRepositoryFactory::class,
             AddressRepositoryInterface::class   => AddressRepositoryFactory::class,
+            TagRepositoryInterface::class       => TagRepositoryFactory::class,
+            
             FlashMessageInterface::class        => FlashMessageFactory::class,
             // Para criar o comando de fixtures
             'doctrine:fixtures_cmd:load'    => CodeEdu\FixtureFactory::class,
