@@ -77,14 +77,37 @@ class Client
         return $this->addresses;
     }
 
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
     public function addTag(Tag $tag)
     {
         $this->tags->add($tag);
         return $this;
     }
 
-    public function getTags()
+    public function removeTag(Tag $tag)
     {
-        return $this->tags;
+        $this->tags->removeElement($tag);
+    }
+
+    public function addTags($tags)
+    {
+        foreach ($tags as $tag) {
+            $tag->addClient($this);
+            $this->addTag($tag);
+        }
+        return $this;
+    }
+
+    public function removeTags($tags)
+    {
+        foreach ($tags as $tag) {
+            $tag->removeClient($this);
+            $this->removeTag($tag);
+        }
+        return $this;    
     }
 }

@@ -44,4 +44,10 @@ class Tag
 		$this->clients->add($client);
 		return $this;
 	}
+
+	public function removeClient(Client $client)
+	{
+		$this->clients->removeElement($client);
+		return $this;
+	}
 }

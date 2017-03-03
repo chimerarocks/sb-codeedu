@@ -217,3 +217,8 @@ em form.global
 ]
 ```
 
+##Tags 
+
+Atenção as fixtures e Form Factory
+
+Toda vez que trabalhar com o Hydrator do Doctrine a entidade deve ter get add remove para relacionamentos
