@@ -1,5 +1,7 @@
 <?php
 
+use Zend\Diactoros\Response\RedirectResponse;
+
 use Zend\Expressive\Router\{
     RouterInterface, 
     AuraRouter
@@ -41,7 +43,9 @@ return [
         [
             'name' => 'home',
             'path' => '/',
-            'middleware' => ClientListPageAction::class,
+            'middleware' => function() {
+                return new RedirectResponse('/admin/clientes');
+            },
             'allowed_methods' => ['GET'],
         ],
         [

@@ -26,7 +26,11 @@ class AuthService implements AuthServiceInterface
 
 	public function isAuth(): bool
 	{
-		return $this->getUser() != null;
+		try {
+			return $this->getUser() != null;
+		} catch (\TypeError $e) {
+			return false;			
+		}
 	}
 
 	public function getUser(): User
