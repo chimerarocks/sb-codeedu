@@ -153,19 +153,19 @@ return [
         ],
         [
             'name' => 'admin.campaigns.list',
-            'path' => '/admin/campaigns',
+            'path' => '/admin/campanhas',
             'middleware' => CampaignListPageAction::class,
             'allowed_methods' => ['GET'],
         ],
         [
             'name' => 'admin.campaigns.create',
-            'path' => '/admin/campaigns/novo',
+            'path' => '/admin/campanhas/novo',
             'middleware' => CampaignCreatePageAction::class,
             'allowed_methods' => ['GET', 'POST'],
         ],
         [
             'name' => 'admin.campaigns.update',
-            'path' => '/admin/campaigns/editar/{id}',
+            'path' => '/admin/campanhas/editar/{id}',
             'middleware' => CampaignUpdatePageAction::class,
             'allowed_methods' => ['GET', 'PUT'],
             'options' => [
@@ -174,7 +174,7 @@ return [
         ],
         [
             'name' => 'admin.campaigns.delete',
-            'path' => '/admin/campaigns/excluir/{id}',
+            'path' => '/admin/campanhas/excluir/{id}',
             'middleware' => CampaignDeletePageAction::class,
             'allowed_methods' => ['GET', 'DELETE'],
             'options' => [

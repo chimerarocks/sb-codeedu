@@ -6,14 +6,14 @@ use CodeEmailMkt\Domain\Repository\{
     TagRepositoryInterface
 };
 use CodeEmailMkt\Domain\Service\{
-    AuthServiceInterface
+    AuthServiceInterface,
     BootstrapInterface,
-    FlashMessageInterface,
+    FlashMessageInterface
 };
 use CodeEmailMkt\Infrastructure\Service\{
-    AuthServiceFactory
+    AuthServiceFactory,
     BootstrapFactory,
-    FlashMessageFactory,
+    FlashMessageFactory
 };
 use CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\{
     AddressRepositoryFactory,
@@ -25,9 +25,9 @@ use Zend\Authentication\AuthenticationService;
 use Zend\Expressive\Application;
 use Zend\Expressive\Container\ApplicationFactory;
 use Zend\Expressive\Helper\{
+    ServerUrlHelper,
     UrlHelper,
-    UrlHelperFactory,
-    ServerUrlHelper
+    UrlHelperFactory
 };
 
 return [

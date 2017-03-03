@@ -46,7 +46,7 @@ class TagFixture extends AbstractFixture implements FixtureInterface, OrderedFix
 		foreach (range(1, $numClients) as $value) {
 			$index = rand(0,99);
 			$client = $this->getReference("client-$index");
-			if ($this->checkAlreadyExistsOnTag($tag, $client)) {
+			if ($this->checkClientAlreadyExistsOnTag($tag, $client)) {
 				$index = rand(0,99);
 				$client = $this->getReference("client-$index");
 			}
@@ -54,7 +54,29 @@ class TagFixture extends AbstractFixture implements FixtureInterface, OrderedFix
 		}
 	}
 
-	public function checkAlreadyExistsOnTag(Tag $tag, Client $client): bool
+	public function addCampaigns(Tag $tag)
+	{
+		$numCampaigns = rand(1,5);
+		foreach (range(1, $numCampaigns) as $value) {
+			$index = rand(0,99);
+			$campaign = $this->getReference("campaign-$index");
+			if ($this->checkCampaignAlreadyExistsOnTag($tag, $campaign)) {
+				$index = rand(0,99);
+				$campaign = $this->getReference("campaign-$index");
+			}
+			$tag->getCampaigns()->add($campaign);
+		}
+	}
+
+	public function checkCampaignAlreadyExistsOnTag(Tag $tag, Campaign $campaign): bool
+	{
+		$exists = $tag->getCampaigns()->exists(function($key, $item) use ($campaign) {
+				return $campaign->getId() == $item->getId();
+		});
+		return $exists;
+	}
+
+	public function checkClientAlreadyExistsOnTag(Tag $tag, Client $client): bool
 	{
 		$exists = $tag->getClients()->exists(function($key, $item) use ($client) {
 				return $client->getId() == $item->getId();
