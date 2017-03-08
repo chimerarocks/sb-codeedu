@@ -43,6 +43,7 @@ class TagFixture extends AbstractFixture implements FixtureInterface, OrderedFix
 	public function addClients(Tag $tag)
 	{
 		$indexesClients = array_rand(range(1,4), rand(2,4));
+		
 		// die(print_r(rand(2,5), true));
 		// die(print_r(range(1,4), true));
 		die(print_r($indexesClients, true));
@@ -57,7 +58,10 @@ class TagFixture extends AbstractFixture implements FixtureInterface, OrderedFix
 		$indexesCampaings = array_rand(range(1,4), rand(2,4));
 		foreach ($indexesCampaings as $value) {
 			$campaign = $this->getReference("campaign-$value");
-			$tag->getCampaigns()->add($campaign);
+			if ($campaign->addTags()->count() < 2) {
+				$campaign->getTags()->add($tag);
+				$tag->getCampaigns()->add($campaign);
+			}
 		}
 	}
 }

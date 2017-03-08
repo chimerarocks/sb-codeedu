@@ -37,7 +37,9 @@ use CodeEmailMkt\Application\Action\Campaign\{
     CampaignUpdate\CampaignUpdatePageAction,
     CampaignUpdate\CampaignUpdatePageFactory,
     CampaignDelete\CampaignDeletePageAction,
-    CampaignDelete\CampaignDeletePageFactory
+    CampaignDelete\CampaignDeletePageFactory,
+    CampaignSender\CampaignSenderPageAction,
+    CampaignSender\CampaignSenderPageFactory
 };
 
 use CodeEmailMkt\Application\Action\{
@@ -177,6 +179,15 @@ return [
             'path' => '/admin/campanhas/excluir/{id}',
             'middleware' => CampaignDeletePageAction::class,
             'allowed_methods' => ['GET', 'DELETE'],
+            'options' => [
+                'id' => '\d+'
+            ]
+        ],
+        [
+            'name' => 'admin.campaigns.sender',
+            'path' => '/admin/campanhas/enviar/{id}',
+            'middleware' => CampaignSenderPageAction::class,
+            'allowed_methods' => ['POST', 'GET'],
             'options' => [
                 'id' => '\d+'
             ]

@@ -41,6 +41,8 @@
 				    			{{ campaign.subject | slice(0,20) }}...
 				    		</td>
 				            <td>
+				            	<a href="{{ url('admin.campaigns.sender', {'id': campaign.id}) }}">Enviar</a>
+				                |
 				                <a href="{{ url('admin.campaigns.update', {'id': campaign.id}) }}">Editar</a>
 				                |
 				                <a href="{{ url('admin.campaigns.delete', {'id': campaign.id}) }}">Excluir</a>

@@ -64,7 +64,7 @@ class CampaignEmailSender implements CampaignEmailSenderInterface
 	protected function getHtmlBody(): string
 	{
 		$template = $this->campaign->getTemplate();
-		$this->templateRenderer->render('app:campaign/_campaign_template', [
+		$this->templateRenderer->render('app::campaigns/_campaign_template', [
 			'content' => $template
 		]);
 	}
