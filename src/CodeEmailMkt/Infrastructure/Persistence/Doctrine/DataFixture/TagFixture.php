@@ -20,7 +20,7 @@ class TagFixture extends AbstractFixture implements FixtureInterface, OrderedFix
 	{
 		$faker = Faker::create();
 
-		foreach (range(1,100) as $value) {
+		foreach (range(1,20) as $value) {
 			$tag = new Tag();
 			$tag->setName($faker->city);
 			$this->addClients($tag);
@@ -42,45 +42,22 @@ class TagFixture extends AbstractFixture implements FixtureInterface, OrderedFix
 
 	public function addClients(Tag $tag)
 	{
-		$numClients = rand(1,5);
-		foreach (range(1, $numClients) as $value) {
-			$index = rand(0,99);
-			$client = $this->getReference("client-$index");
-			if ($this->checkClientAlreadyExistsOnTag($tag, $client)) {
-				$index = rand(0,99);
-				$client = $this->getReference("client-$index");
-			}
+		$indexesClients = array_rand(range(1,4), rand(2,4));
+		// die(print_r(rand(2,5), true));
+		// die(print_r(range(1,4), true));
+		die(print_r($indexesClients, true));
+		foreach ($indexesClients as $key => $value) {
+			$client = $this->getReference("client-$value");
 			$tag->getClients()->add($client);
 		}
 	}
 
 	public function addCampaigns(Tag $tag)
 	{
-		$numCampaigns = rand(1,5);
-		foreach (range(1, $numCampaigns) as $value) {
-			$index = rand(0,99);
-			$campaign = $this->getReference("campaign-$index");
-			if ($this->checkCampaignAlreadyExistsOnTag($tag, $campaign)) {
-				$index = rand(0,99);
-				$campaign = $this->getReference("campaign-$index");
-			}
+		$indexesCampaings = array_rand(range(1,4), rand(2,4));
+		foreach ($indexesCampaings as $value) {
+			$campaign = $this->getReference("campaign-$value");
 			$tag->getCampaigns()->add($campaign);
 		}
-	}
-
-	public function checkCampaignAlreadyExistsOnTag(Tag $tag, Campaign $campaign): bool
-	{
-		$exists = $tag->getCampaigns()->exists(function($key, $item) use ($campaign) {
-				return $campaign->getId() == $item->getId();
-		});
-		return $exists;
-	}
-
-	public function checkClientAlreadyExistsOnTag(Tag $tag, Client $client): bool
-	{
-		$exists = $tag->getClients()->exists(function($key, $item) use ($client) {
-				return $client->getId() == $item->getId();
-		});
-		return $exists;
 	}
 }

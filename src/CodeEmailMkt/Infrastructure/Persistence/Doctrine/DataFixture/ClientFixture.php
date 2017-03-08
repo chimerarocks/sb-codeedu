@@ -22,7 +22,7 @@ class ClientFixture extends AbstractFixture implements FixtureInterface, Ordered
 	{
 		$faker = Faker::create();
 
-		foreach (range(1,100) as $key => $value) {
+		foreach (range(1,4) as $key) {
 			$client = new Client();
 			$client->setName($faker->firstName . ' ' . $faker->lastName)
 				->setEmail($faker->email)
@@ -33,6 +33,14 @@ class ClientFixture extends AbstractFixture implements FixtureInterface, Ordered
 		}
 
 		$manager->flush();
+		
+		$client = new Client();
+		$client->setName($faker->firstName . ' ' . $faker->lastName)
+			->setEmail('joaopedrodslv@gmail.com')
+			->setCpf($faker->randomNumber(5))
+			;
+		$manager->persist($client);
+		$this->addReference("client-5", $client);
 	}
 
 	/**

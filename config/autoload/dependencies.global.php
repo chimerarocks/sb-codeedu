@@ -8,11 +8,13 @@ use CodeEmailMkt\Domain\Repository\{
 use CodeEmailMkt\Domain\Service\{
     AuthServiceInterface,
     BootstrapInterface,
+    CampaignEmailSenderInterface,
     FlashMessageInterface
 };
 use CodeEmailMkt\Infrastructure\Service\{
     AuthServiceFactory,
     BootstrapFactory,
+    CampaignEmailSenderFactory,
     FlashMessageFactory
 };
 use CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\{
@@ -54,11 +56,12 @@ return [
             TagRepositoryInterface::class       => TagRepositoryFactory::class,
             CampaignRepositoryInterface::class  => CampaignRepositoryFactory::class,
             
+            // Services
             FlashMessageInterface::class        => FlashMessageFactory::class,
-            // Para criar o comando de fixtures
-            'doctrine:fixtures_cmd:load'    => CodeEdu\FixtureFactory::class,
-            AuthServiceInterface::class     => AuthServiceFactory::class,
-            Mailgun::class                  => MailgunFactory::class,
+            CampaignEmailSenderInterface::class => CampaignEmailSenderFactory::class,
+            'doctrine:fixtures_cmd:load'        => CodeEdu\FixtureFactory::class, // Para criar o comando de fixtures
+            AuthServiceInterface::class         => AuthServiceFactory::class,
+            Mailgun::class                      => MailgunFactory::class,
 
         ],
         'aliases' => [
