@@ -30,12 +30,19 @@ class CampaignEmailSender implements CampaignEmailSenderInterface
 	public function send()
 	{
 		$tags = $this->campaign->getTags()->toArray();
+		$batchMessage = $this->getBatchMessage();
 		foreach ($tags as $tag) {
+			$batchMessage->addTag($tag->getName());
 			$customers = $tag->getCustomers()->toArray();
 			foreach ($customers) {
-				# code...
+				$name = (!$customer->getName() or $customer->getName() == '') 
+					? $customer->getEmail() : $customer->getName();
+				$batchMessage->addToRecipient($customer->getEmail(), [
+					'full_name' => $customer->getName()
+				]);
 			}
 		}
+		$batchMessage->finalize();
 	}
 
 	public function setCampaign(Campaign $campaign): CampaignEmailSender
