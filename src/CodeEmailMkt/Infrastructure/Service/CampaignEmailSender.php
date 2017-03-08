@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CodeEmailMkt\Infrastructure\Service;
 
+use CodeEmailMkt\Domain\Repository\ClientRepositoryInterface;
 use CodeEmailMkt\Domain\Service\CampaignEmailSenderInterface;
 use Mailgun\Mailgun;
 use Mailgun\Messages\BatchMessage;
@@ -14,33 +15,40 @@ class CampaignEmailSender implements CampaignEmailSenderInterface
 	private $templateRenderer;
 	private $mailGun;
 	private $mailGunConfig;
+	private $clientRepository;
 
 	public function __construct(
 		TemplateRendererInterface $templateRenderer, 
 		Mailgun $mailGun, 
-		array $mailGunConfig
+		array $mailGunConfig,
+		ClientRepositoryInterface $clientRepository
 	)
 	{
 
 		$this->templateRenderer = $templateRenderer;
 		$this->mailGun = $mailGun;
 		$this->mailGunConfig = $mailGunConfig;
+		$this->clientRepository = $clientRepository;
 	}
 
 	public function send()
 	{
-		$tags = $this->campaign->getTags()->toArray();
 		$batchMessage = $this->getBatchMessage();
+		$tags = $this->campaign->getTags()->toArray();
+		
 		foreach ($tags as $tag) {
 			$batchMessage->addTag($tag->getName());
-			$customers = $tag->getCustomers()->toArray();
-			foreach ($customers) {
-				$name = (!$customer->getName() or $customer->getName() == '') 
-					? $customer->getEmail() : $customer->getName();
-				$batchMessage->addToRecipient($customer->getEmail(), [
-					'full_name' => $customer->getName()
-				]);
-			}
+			
+		}
+		
+		$clients = $this->clientRepository->findByTags($tags);
+
+		foreach ($clients as $client) {
+			$name = (!$client->getName() or $client->getName() == '') 
+				? $client->getEmail() : $client->getName();
+			$batchMessage->addToRecipient($client->getEmail(), [
+				'full_name' => $name
+			]);
 		}
 		$batchMessage->finalize();
 	}
