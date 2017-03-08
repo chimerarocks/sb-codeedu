@@ -50,11 +50,15 @@ class CampaignEmailSender implements CampaignEmailSenderInterface
 		$batchMessage->addCampaignId("campaign_{$this->campaign->getId()}");
 		$batchMessage->setFromAddress('joaopedrodslv@gmail.com', ['full_name' => 'João Pedro']);
 		$batchMessage->setSubject($this->campaign->getSubject());
+		$batchMessage->setHtmlBody($this->getHtmlBody());
 		return $batchMessage;
 	}
 
 	protected function getHtmlBody(): string
 	{
-
+		$template = $this->campaign->getTemplate();
+		$this->templateRenderer->render('app:campaign/_campaign_template', [
+			'content' => $template
+		]);
 	}
 }
