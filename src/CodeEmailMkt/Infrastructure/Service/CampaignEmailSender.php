@@ -5,6 +5,7 @@ namespace CodeEmailMkt\Infrastructure\Service;
 
 use CodeEmailMkt\Domain\Repository\ClientRepositoryInterface;
 use CodeEmailMkt\Domain\Service\CampaignEmailSenderInterface;
+use Mailgun\Connection\Exceptions\MissingEndpoint;
 use Mailgun\Mailgun;
 use Mailgun\Messages\BatchMessage;
 use Zend\Expressive\Template\TemplateRendererInterface;
@@ -33,6 +34,7 @@ class CampaignEmailSender implements CampaignEmailSenderInterface
 
 	public function send()
 	{
+		$this->createCampaign();
 		$batchMessage = $this->getBatchMessage();
 		$tags = $this->campaign->getTags()->toArray();
 		
@@ -75,5 +77,18 @@ class CampaignEmailSender implements CampaignEmailSenderInterface
 		$this->templateRenderer->render('app::campaigns/_campaign_template', [
 			'content' => $template
 		]);
+	}
+
+	protected function crateCampaign()
+	{
+		$domain = $this->mailgunConfig['domain'];
+		try {
+			$this->mailgun->get("$domain/campaigns/campaign_{$this->campaign->getId()}");
+		} catch (MissingEndpoint $e) {
+			$this->mailgun->post("$domain/campaigns", [
+				"id" 	=> "campaign_{$this->campaign->getId()}",
+				"name" 	=> $this->campaign->getName();
+			]);
+		}
 	}
 }
