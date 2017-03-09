@@ -8,6 +8,7 @@ use CodeEmailMkt\Domain\Service\CampaignReportInterface;
 use Mailgun\Connection\Exceptions\MissingEndpoint;
 use Mailgun\Mailgun;
 use Mailgun\Messages\BatchMessage;
+use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
 class CampaignReport implements CampaignReportInterface
@@ -40,12 +41,35 @@ class CampaignReport implements CampaignReportInterface
 
 	public function render(): ResponseInterface
 	{
-		$this->getCampaignData();
+		return new HtmlResponse($this->templateRenderer->render('app::campaign/report', [
+			'campaign_data' 	=> $this->getCampaignData(),
+			'campaign'			=> $this->campaign,
+			'clients_count' 	=> $this->getCountClients(),
+			'opened_distinct_counts' => $this->getCountOpenedDistinct()
+		]));
 	}
 
 	protected function getCampaignData()
 	{
 		$domain = $this->mailGunConfig['domain'];
+		$response = $this->mailGun->get("$domain/campaigns/campaign_{$this->campaign->getId()}");
+		return $response->http_response_body;
+	}
 
+	protected function getCountOpenedDistinct()
+	{
+		$domain = $this->mailGunConfig['domain'];
+		$response = $this->mailGun->get("$domain/campaigns/campaign_{$this->campaign->getId()}/opens", [
+			'group_by' 	=> 'recipient',
+			'count'		=> true
+		]);
+		return $response->http_response_body->count;
+	}
+
+	protected function getCountClients()
+	{
+		$tags = $this->campaign->getTags()->toArray();
+		$clients = $this->clientRepository->findByTags($tags);
+		return count($clients);
 	}
 }
