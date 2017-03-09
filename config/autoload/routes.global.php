@@ -39,7 +39,9 @@ use CodeEmailMkt\Application\Action\Campaign\{
     CampaignDelete\CampaignDeletePageAction,
     CampaignDelete\CampaignDeletePageFactory,
     CampaignSender\CampaignSenderPageAction,
-    CampaignSender\CampaignSenderPageFactory
+    CampaignSender\CampaignSenderPageFactory,
+    CampaignReport\CampaignReportPageAction,
+    CampaignReport\CampaignReportPageFactory
 };
 
 use CodeEmailMkt\Application\Action\{
@@ -67,6 +69,8 @@ return [
             CampaignCreatePageAction::class => CampaignCreatePageFactory::class,
             CampaignUpdatePageAction::class => CampaignUpdatePageFactory::class,
             CampaignDeletePageAction::class => CampaignDeletePageFactory::class,
+            CampaignSenderPageAction::class => CampaignSenderPageFactory::class,
+            CampaignReportPageAction::class => CampaignReportPageFactory::class,
             LoginPageAction::class          => LoginPageFactory::class,
             LogoutAction::class             => LogoutFactory::class,
         ],
@@ -188,6 +192,15 @@ return [
             'path' => '/admin/campanhas/enviar/{id}',
             'middleware' => CampaignSenderPageAction::class,
             'allowed_methods' => ['POST', 'GET'],
+            'options' => [
+                'id' => '\d+'
+            ]
+        ],
+        [
+            'name' => 'admin.campaigns.report',
+            'path' => '/admin/campanhas/relatorio/{id}',
+            'middleware' => CampaignReportPageAction::class,
+            'allowed_methods' => ['GET'],
             'options' => [
                 'id' => '\d+'
             ]
