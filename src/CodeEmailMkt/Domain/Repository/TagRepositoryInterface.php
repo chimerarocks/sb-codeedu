@@ -2,8 +2,10 @@
 
 namespace CodeEmailMkt\Domain\Repository;
 
+use CodeEmailMkt\Domain\Repository\RepositoryCriteriaInterface;
 
-interface TagRepositoryInterface
+
+interface TagRepositoryInterface extends RepositoryCriteriaInterface
 {
     
 }
