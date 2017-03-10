@@ -27,7 +27,7 @@ class CampaignSenderPageAction
         Template\TemplateRendererInterface  $template,
         RouterInterface                     $router,
         CampaignForm                        $form,
-        CampaignEmailSenderInterface        $emailSender,
+        CampaignEmailSenderInterface        $emailSender
         )
     {
         $this->repository   = $repository;

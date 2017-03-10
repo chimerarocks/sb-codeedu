@@ -32,8 +32,6 @@ class ClientFixture extends AbstractFixture implements FixtureInterface, Ordered
 			$this->addReference("client-$key", $client);
 		}
 
-		$manager->flush();
-		
 		$client = new Client();
 		$client->setName($faker->firstName . ' ' . $faker->lastName)
 			->setEmail('joaopedrodslv@gmail.com')
@@ -41,6 +39,8 @@ class ClientFixture extends AbstractFixture implements FixtureInterface, Ordered
 			;
 		$manager->persist($client);
 		$this->addReference("client-5", $client);
+
+		$manager->flush();
 	}
 
 	/**

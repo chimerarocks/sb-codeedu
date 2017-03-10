@@ -5,9 +5,9 @@ namespace CodeEmailMkt\Domain\Repository\Criteria;
 
 use CodeEmailMkt\Domain\Repository\CriteriaInterface;
 
-interface FindByNameCriteriaInterface extends CriteriaInterface
+interface FindByIdCriteriaInterface extends CriteriaInterface
 {
-	public function setName(string $name);
+	public function setId(string $id);
 
-	public function getName(): string;
+	public function getId(): string;
 }

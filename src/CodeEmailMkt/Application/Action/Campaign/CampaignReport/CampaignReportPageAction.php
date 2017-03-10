@@ -15,7 +15,7 @@ class CampaignReportPageAction
 
     public function __construct(
         CampaignRepositoryInterface         $repository,
-        CampaignReportInterface             $report,
+        CampaignReportInterface             $report
     )
     {
         $this->repository   = $repository;

@@ -7,7 +7,7 @@ use CodeEmailMkt\Domain\Repository\CampaignRepositoryInterface;
 use CodeEmailMkt\Domain\Service\CampaignReportInterface;
 use Interop\Container\ContainerInterface;
 
-class CampaignSenderPageFactory
+class CampaignReportPageFactory
 {
     public function __invoke(ContainerInterface $container): CampaignReportPageAction
     {

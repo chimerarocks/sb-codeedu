@@ -2,6 +2,7 @@
 
 namespace CodeEmailMkt\Application\Action\Tag\TagList;
 
+use CodeEmailMkt\Domain\Repository\Criteria\FindByNameCriteriaInterface;
 use CodeEmailMkt\Domain\Repository\TagRepositoryInterface;
 use CodeEmailMkt\Domain\Service\FlashMessageInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -15,7 +16,10 @@ class TagListPageAction
 
     private $template;
 
-    public function __construct(TagRepositoryInterface $repository, Template\TemplateRendererInterface $template = null)
+    public function __construct(
+        TagRepositoryInterface $repository, 
+        Template\TemplateRendererInterface $template = null
+    )
     {
         $this->repository = $repository;
         $this->template = $template;

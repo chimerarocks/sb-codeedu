@@ -3,11 +3,13 @@ declare(strict_types=1);
 
 namespace CodeEmailMkt\Infrastructure\Service;
 
+use CodeEmailMkt\Domain\Entity\Campaign;
 use CodeEmailMkt\Domain\Repository\ClientRepositoryInterface;
 use CodeEmailMkt\Domain\Service\CampaignReportInterface;
 use Mailgun\Connection\Exceptions\MissingEndpoint;
 use Mailgun\Mailgun;
 use Mailgun\Messages\BatchMessage;
+use Psr\Http\Message\ResponseInterface;
 use Zend\Diactoros\Response\HtmlResponse;
 use Zend\Expressive\Template\TemplateRendererInterface;
 
@@ -33,7 +35,7 @@ class CampaignReport implements CampaignReportInterface
 		$this->clientRepository = $clientRepository;
 	}
 
-	public function setCampaign(Campaign $campaign): CampaignReport
+	public function setCampaign(Campaign $campaign)
 	{
 		$this->campaign = $campaign;
 		return $this;

@@ -2,11 +2,13 @@
 
 namespace CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository;
 
+use CodeEmailMkt\Domain\Repository\CriteriaInterface;
+
 trait RepositoryCriteriaTrait
 {
 	protected $criterias;
 
-	public $ALIAS_ENTITY;
+	public $ALIAS_ENTITY = 'entity';
 
 	public function addCriteria(CriteriaInterface $criteria)
 	{

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace CodeEmailMkt\Infrastructure\Service;
 
+use CodeEmailMkt\Domain\Entity\Campaign;
 use CodeEmailMkt\Domain\Repository\ClientRepositoryInterface;
 use CodeEmailMkt\Domain\Service\CampaignEmailSenderInterface;
 use Mailgun\Connection\Exceptions\MissingEndpoint;
@@ -55,7 +56,7 @@ class CampaignEmailSender implements CampaignEmailSenderInterface
 		$batchMessage->finalize();
 	}
 
-	public function setCampaign(Campaign $campaign): CampaignEmailSender
+	public function setCampaign(Campaign $campaign)
 	{
 		$this->campaign = $campaign;
 		return $this;
@@ -74,20 +75,20 @@ class CampaignEmailSender implements CampaignEmailSenderInterface
 	protected function getHtmlBody(): string
 	{
 		$template = $this->campaign->getTemplate();
-		$this->templateRenderer->render('app::campaigns/_campaign_template', [
+		return $this->templateRenderer->render('app::campaigns/_campaign_template', [
 			'content' => $template
 		]);
 	}
 
-	protected function crateCampaign()
+	protected function createCampaign()
 	{
-		$domain = $this->mailgunConfig['domain'];
+		$domain = $this->mailGunConfig['domain'];
 		try {
-			$this->mailgun->get("$domain/campaigns/campaign_{$this->campaign->getId()}");
+			$this->mailGun->get("$domain/campaigns/campaign_{$this->campaign->getId()}");
 		} catch (MissingEndpoint $e) {
-			$this->mailgun->post("$domain/campaigns", [
+			$this->mailGun->post("$domain/campaigns", [
 				"id" 	=> "campaign_{$this->campaign->getId()}",
-				"name" 	=> $this->campaign->getName();
+				"name" 	=> $this->campaign->getName()
 			]);
 		}
 	}

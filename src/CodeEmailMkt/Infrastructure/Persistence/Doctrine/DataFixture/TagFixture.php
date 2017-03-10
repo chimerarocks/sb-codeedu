@@ -42,11 +42,9 @@ class TagFixture extends AbstractFixture implements FixtureInterface, OrderedFix
 
 	public function addClients(Tag $tag)
 	{
-		$indexesClients = array_rand(range(1,4), rand(2,4));
+		$indexesClients = range(1,4);
+		shuffle($indexesClients);
 		
-		// die(print_r(rand(2,5), true));
-		// die(print_r(range(1,4), true));
-		die(print_r($indexesClients, true));
 		foreach ($indexesClients as $key => $value) {
 			$client = $this->getReference("client-$value");
 			$tag->getClients()->add($client);

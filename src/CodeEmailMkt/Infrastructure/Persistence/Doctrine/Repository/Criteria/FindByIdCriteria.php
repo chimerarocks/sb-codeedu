@@ -3,27 +3,27 @@ declare(strict_types=1);
 
 namespace CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\Criteria;
 
-use CodeEmailMkt\Domain\Repository\Criteria\FindByNameCriteriaInterface;
+use CodeEmailMkt\Domain\Repository\Criteria\FindByIdCriteriaInterface;
 use CodeEmailMkt\Domain\Repository\RepositoryCriteriaInterface;
 
-class FindByNameCriteria implements FindByNameCriteriaInterface
+class FindByIdCriteria implements FindByIdCriteriaInterface
 {
-	private $name;
+	private $id;
 
 	public function apply(RepositoryCriteriaInterface $repository)
 	{
 		$alias = $repository->ALIAS_ENTITY;
 		$queryBuilder = $repository->getQueryBuilder();
-		$queryBuilder->andWhere("$alias.name = :name");
+		$queryBuilder->andWhere("$alias.id = :id");
 	}
 
-	public function setName(string $name)
+	public function setId(string $id)
 	{
-		$this->name = $name;
+		$this->id = $id;
 	}
 
-	public function getName(): string
+	public function getId(): string
 	{
-		$this->name;
+		$this->id;
 	}
 }

@@ -3,7 +3,9 @@ use CodeEmailMkt\Domain\Repository\{
     AddressRepositoryInterface,
     CampaignRepositoryInterface,
     ClientRepositoryInterface,
-    TagRepositoryInterface
+    TagRepositoryInterface,
+    Criteria\FindByNameCriteriaInterface,
+    Criteria\FindByIdCriteriaInterface
 };
 use CodeEmailMkt\Domain\Service\{
     AuthServiceInterface,
@@ -17,14 +19,18 @@ use CodeEmailMkt\Infrastructure\Service\{
     BootstrapFactory,
     CampaignEmailSenderFactory,
     CampaignReportFactory,
-    FlashMessageFactory
+    FlashMessageFactory,
+    MailgunFactory
 };
 use CodeEmailMkt\Infrastructure\Persistence\Doctrine\Repository\{
     AddressRepositoryFactory,
     CampaignRepositoryFactory,
     ClientRepositoryFactory,
-    TagRepositoryFactory
+    TagRepositoryFactory,
+    Criteria\FindByNameCriteria,
+    Criteria\FindByIdCriteria
 };
+use Mailgun\Mailgun;
 use Zend\Authentication\AuthenticationService;
 use Zend\Expressive\Application;
 use Zend\Expressive\Container\ApplicationFactory;
@@ -45,6 +51,8 @@ return [
         'invokables' => [
             // Fully\Qualified\InterfaceName::class => Fully\Qualified\ClassName::class,
             ServerUrlHelper::class => ServerUrlHelper::class,
+            FindByNameCriteriaInterface::class => FindByNameCriteria::class,
+            FindByIdCriteriaInterface::class => FindByIdCriteria::class
         ],
         // Use 'factories' for services provided by callbacks/factory classes.
         'factories' => [
