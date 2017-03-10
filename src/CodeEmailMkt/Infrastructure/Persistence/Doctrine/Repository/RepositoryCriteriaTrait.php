@@ -6,7 +6,7 @@ trait RepositoryCriteriaTrait
 {
 	protected $criterias;
 
-	protected $ALIAS_ENTITY;
+	public $ALIAS_ENTITY;
 
 	public function addCriteria(CriteriaInterface $criteria)
 	{
